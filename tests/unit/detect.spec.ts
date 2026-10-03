@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 
 import { blocksIn } from '../../hooks/detect/markdown.ts'
-import { imagesIn, sentImagesIn } from '../../hooks/detect/tool-output.ts'
+import { imagesIn, readSvgIn, sentFilesIn } from '../../hooks/detect/tool-output.ts'
 import { createRegistry } from '../../hooks/renderers/index.ts'
 
 const fence = (lang: string, body: string) => `\`\`\`${lang}\n${body}\n\`\`\`\n`
@@ -42,30 +42,48 @@ test('imagesIn reads the Read, MCP content, and API image shapes and skips other
   ])
 })
 
-test('sentImagesIn takes the raster images SendUserFile sent, inferring a missing media type from the extension', () => {
+test('sentFilesIn takes the raster images and SVGs SendUserFile sent by media type, inferring a missing one from the extension', () => {
   const output = {
     attachments: [
       { path: '/repo/shot.png', size: 1, isImage: true, media_type: 'image/png' },
       { path: '/repo/report.pdf', size: 1, isImage: false, media_type: 'application/pdf' },
       { path: '/repo/photo.JPG', size: 1, isImage: true },
-      { path: '/repo/diagram.svg', size: 1, isImage: true, media_type: 'image/svg+xml' },
+      { path: '/repo/diagram.svg', size: 1, isImage: false, media_type: 'image/svg+xml' },
+      { path: '/repo/photo.heic', size: 1, isImage: true, media_type: 'image/heic' },
     ],
   }
 
-  expect(sentImagesIn('SendUserFile', output)).toEqual([
+  expect(sentFilesIn('SendUserFile', output)).toEqual([
     { path: '/repo/shot.png', mime: 'image/png' },
     { path: '/repo/photo.JPG', mime: 'image/jpeg' },
+    { path: '/repo/diagram.svg', mime: 'image/svg+xml' },
   ])
 })
 
-test('sentImagesIn ignores attachments from tools other than SendUserFile', () => {
+test('sentFilesIn ignores attachments from tools other than SendUserFile', () => {
   const output = { attachments: [{ path: '/repo/shot.png', size: 1, isImage: true, media_type: 'image/png' }] }
 
-  expect(sentImagesIn('SomeMcpTool', output)).toEqual([])
+  expect(sentFilesIn('SomeMcpTool', output)).toEqual([])
 })
 
 test('imagesIn stops at its limit', () => {
   const output = Array.from({ length: 10 }, () => ({ type: 'image', data: 'A', mimeType: 'image/png' }))
 
   expect(imagesIn(output, 2)).toHaveLength(2)
+})
+
+const readText = (filePath: string, content: string, lines: { startLine?: number; numLines?: number } = {}) => ({
+  type: 'text',
+  file: { filePath, content, startLine: lines.startLine ?? 1, numLines: lines.numLines ?? 3, totalLines: 3 },
+})
+
+test('readSvgIn takes the source of an SVG Read returned whole', () => {
+  expect(readSvgIn('Read', readText('/repo/Diagram.SVG', '<svg/>'))).toBe('<svg/>')
+})
+
+test('readSvgIn skips a partial read, other files, and other tools', () => {
+  expect(readSvgIn('Read', readText('/repo/diagram.svg', '<svg', { numLines: 1 }))).toBeUndefined()
+  expect(readSvgIn('Read', readText('/repo/diagram.svg', '</svg>', { startLine: 3, numLines: 1 }))).toBeUndefined()
+  expect(readSvgIn('Read', readText('/repo/notes.txt', '<svg/>'))).toBeUndefined()
+  expect(readSvgIn('Grep', readText('/repo/diagram.svg', '<svg/>'))).toBeUndefined()
 })

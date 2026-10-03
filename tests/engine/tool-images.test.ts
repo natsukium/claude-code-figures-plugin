@@ -111,6 +111,55 @@ test('an image SendUserFile sent is read from its path and drawn full size under
   })
 })
 
+test('an SVG that Read returned whole is drawn by resvg under the tool row', async ($, on) => {
+  const source = '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200"/>'
+  const { runs, stdins } = stubWorld(on)
+
+  const ui = await mountToolUse($, {
+    type: 'text',
+    file: { filePath: '/repo/diagram.svg', content: source, startLine: 1, numLines: 1, totalLines: 1 },
+  })
+
+  expect(await ui.find({ type: 'Image' })).toBeDefined()
+  expect(runs.map((argv) => argv[0])).toEqual(['resvg'])
+  expect(stdins[0]).toBe(source)
+})
+
+test('an SVG and a PNG sent together are drawn in the order they were attached', async ($, on) => {
+  stubWorld(on, {
+    read: (path) => ({
+      value: path.endsWith('.svg') ? '<svg xmlns="http://www.w3.org/2000/svg"/>' : { base64: PNG_1600x400 },
+    }),
+  })
+
+  const ui = await mountSentResult($, {
+    attachments: [
+      { path: '/repo/diagram.svg', size: 1, isImage: false, media_type: 'image/svg+xml' },
+      { path: '/repo/shot.png', size: 1, isImage: true, media_type: 'image/png' },
+    ],
+  })
+
+  const files = (await ui.findAll({ type: 'Image' })).map((image) => (image.props.source as { file: string }).file)
+  expect(files).toHaveLength(2)
+  expect(files[0]).not.toMatch(/\/img-/)
+  expect(files[1]).toMatch(/\/img-[0-9a-f]{64}\.png$/)
+})
+
+test('an SVG SendUserFile sent is read as text and drawn by resvg under its attachment line', async ($, on) => {
+  const source = '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200"/>'
+  const { runs, stdins } = stubWorld(on, {
+    read: (path) => ({ value: path.endsWith('.svg') ? source : { base64: PNG_1600x400 } }),
+  })
+
+  const ui = await mountSentResult($, {
+    attachments: [{ path: '/repo/diagram.svg', size: 1, isImage: false, media_type: 'image/svg+xml' }],
+  })
+
+  expect(await ui.find({ type: 'Image' })).toBeDefined()
+  expect(runs.map((argv) => argv[0])).toEqual(['resvg'])
+  expect(stdins[0]).toBe(source)
+})
+
 test("SendUserFile's tool row is left to the engine, so its image is drawn once", async ($, on) => {
   const { runs } = stubWorld(on)
 

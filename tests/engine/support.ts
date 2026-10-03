@@ -44,7 +44,7 @@ export type Stubs = {
   png?: string
   exists?: (path: string) => boolean
   respond?: Respond
-  read?: (path: string) => { value: { base64: string } } | { deny: string }
+  read?: (path: string) => { value: { base64: string } | string } | { deny: string }
 }
 
 /**
