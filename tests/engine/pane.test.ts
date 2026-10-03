@@ -70,6 +70,32 @@ test('Open in the figures pane hands the PNG to open, then xdg-open when open is
   expect(runs.find((argv) => argv[0] === 'xdg-open')?.[1]).toMatch(/img-[0-9a-f]{64}\.png$/)
 })
 
+test('the figures pane includes an image sent with SendUserFile', async ($, on) => {
+  stubWorld(on)
+  stubTranscript(on, [
+    {
+      role: 'assistant',
+      text: '',
+      toolUses: [
+        {
+          tool_use_id: 'toolu_1',
+          tool: 'SendUserFile',
+          input: {},
+          result: { attachments: [{ path: '/repo/sent.png', size: 1, isImage: true, media_type: 'image/png' }] },
+          text: '',
+        },
+      ],
+    },
+  ])
+
+  const ui = await mountPane($)
+
+  expect(await ui.find({ text: /1\/1 SendUserFile$/ })).toBeDefined()
+  expect((await ui.find({ type: 'Image' }))?.props).toMatchObject({
+    source: { file: expect.stringMatching(/img-[0-9a-f]{64}\.png$/) },
+  })
+})
+
 test('the figures pane says so when nothing has been drawn', async ($, on) => {
   stubWorld(on)
   stubTranscript(on, [{ role: 'user', text: 'hi', toolUses: [] }])

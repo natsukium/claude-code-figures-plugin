@@ -14,7 +14,10 @@ transcript, using the kitty graphics protocol.
   sit inside a line, and a `latex` block holding a whole document (`\documentclass`) stays code.
 - **Tool-result images.** `Read` on a PNG, JPEG, GIF, or WebP file, or a screenshot an MCP tool
   returns, is drawn under the tool's row, where Claude Code otherwise shows only a size line. In a
-  collapsed tool group they are thumbnails; ctrl+o unfolds the group and draws them full size.
+  collapsed tool group they are thumbnails; ctrl+o unfolds the group and draws them full size. A
+  PNG, JPEG, GIF, or WebP Claude sends to another device with `SendUserFile` is drawn under its
+  attachment line too, so it is on screen when you come back to the terminal. It is read from disk
+  when the row is first drawn; overwriting the file later leaves that picture as it was.
 
 A picture the size caps would shrink below 60% of its natural size grows up to the terminal's
 height, and one still smaller says so under it, such as `shown at 43% · /figures to enlarge`.

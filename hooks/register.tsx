@@ -1,15 +1,15 @@
 import { atom, read, update } from 'claude-code'
-import type { EngineInterface, Register } from 'claude-code'
+import type { EngineInterface, Register, RenderChildren } from 'claude-code'
 
 import { parseConfig } from './config.ts'
 import type { Figures } from './figures.ts'
 import type { Io } from './io.ts'
-import { cacheDir, expire } from './pipeline/cache.ts'
+import { Memo, cacheDir, expire } from './pipeline/cache.ts'
 import { Pipeline } from './pipeline/index.ts'
 import { createRegistry } from './renderers/index.ts'
 import { replyPictures, toolGroupPictures, toolUsePictures } from './ui/inline.tsx'
 import { PANE, drawPane } from './ui/pane.tsx'
-import { viewportOf } from './ui/pictures.tsx'
+import { type TerminalElements, type pictures, viewportOf } from './ui/pictures.tsx'
 
 const selected = atom({ plugin: 'figures', key: 'selected' } as const, null)
 
@@ -32,7 +32,7 @@ function ioOf($: EngineInterface): Io {
 export const register: Register = (on, options) => {
   const config = parseConfig(options)
   const registry = createRegistry(config.renderers)
-  const figures: Figures = { config, registry, pipeline: new Pipeline(registry) }
+  const figures: Figures = { config, registry, pipeline: new Pipeline(registry), sent: new Memo() }
 
   on('session.start', async ($, e, next) => {
     const io = ioOf($)
@@ -59,47 +59,42 @@ export const register: Register = (on, options) => {
 
   on('ui.render', { component: 'AssistantMessage' }, async ($, e, next) => {
     if (e.surface !== 'terminal') return next(e)
-    const { Box, Image, Text } = $.ui.resolve(e)
-    const drawn = await replyPictures(ioOf($), figures, { Box, Image, Text }, e.props.text, viewportOf(e))
-    if (drawn === undefined) return next(e)
-    return (
-      <Box flexDirection="column">
-        {await next(e)}
-        {drawn}
-      </Box>
-    )
+    const el = $.ui.resolve(e)
+    return under(el, () => next(e), await replyPictures(ioOf($), figures, el, e.props.text, viewportOf(e)))
+  })
+
+  // SendUserFile's ToolUse row draws nothing of its own, so a picture hung
+  // under it lands above the attachment line its ToolResult draws.
+  on('ui.render', { component: 'ToolResult' }, async ($, e, next) => {
+    if (e.surface !== 'terminal' || e.props.tool !== 'SendUserFile' || e.props.isErrored) return next(e)
+    const el = $.ui.resolve(e)
+    return under(el, () => next(e), await toolUsePictures(ioOf($), figures, el, e.props, viewportOf(e)))
   })
 
   on('ui.render', { component: 'ToolUse' }, async ($, e, next) => {
     if (e.surface !== 'terminal' || e.props.isRunning || e.props.output === undefined) return next(e)
-    const { Box, Image, Text } = $.ui.resolve(e)
-    const drawn = await toolUsePictures(
-      ioOf($),
-      figures,
-      { Box, Image, Text },
-      e.props.tool,
-      e.props.output,
-      viewportOf(e),
-    )
-    if (drawn === undefined) return next(e)
-    return (
-      <Box flexDirection="column">
-        {await next(e)}
-        {drawn}
-      </Box>
-    )
+    if (e.props.tool === 'SendUserFile') return next(e)
+    const el = $.ui.resolve(e)
+    return under(el, () => next(e), await toolUsePictures(ioOf($), figures, el, e.props, viewportOf(e)))
   })
 
   on('ui.render', { component: 'ToolGroup' }, async ($, e, next) => {
     if (e.surface !== 'terminal' || e.props.isExpanded) return next(e)
-    const { Box, Image, Text } = $.ui.resolve(e)
-    const drawn = await toolGroupPictures(ioOf($), figures, { Box, Image, Text }, e.props.calls, viewportOf(e))
-    if (drawn === undefined) return next(e)
-    return (
-      <Box flexDirection="column">
-        {await next(e)}
-        {drawn}
-      </Box>
-    )
+    const el = $.ui.resolve(e)
+    return under(el, () => next(e), await toolGroupPictures(ioOf($), figures, el, e.props.calls, viewportOf(e)))
   })
+}
+
+async function under<Row extends RenderChildren>(
+  { Box }: TerminalElements,
+  row: () => Promise<Row>,
+  drawn: ReturnType<typeof pictures> | undefined,
+) {
+  if (drawn === undefined) return row()
+  return (
+    <Box flexDirection="column">
+      {await row()}
+      {drawn}
+    </Box>
+  )
 }

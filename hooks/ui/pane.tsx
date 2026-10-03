@@ -21,7 +21,7 @@ export type PaneProps = {
 }
 
 // Render hooks may not write state, so the gallery is rebuilt from the
-// transcript; the pipeline's memo makes that a lookup for anything drawn.
+// transcript; the memos make that a lookup for anything drawn.
 async function collect(io: Io, figures: Figures): Promise<GalleryItem[]> {
   const items = (outcomes: Outcome[], kind: GalleryItem['kind'], label: (i: number) => string): GalleryItem[] =>
     outcomes.flatMap((outcome, i) =>
@@ -41,7 +41,13 @@ async function collect(io: Io, figures: Figures): Promise<GalleryItem[]> {
       const tools = await Promise.all(
         message.toolUses
           .filter((use) => use.result !== undefined && !use.isError)
-          .map(async (use) => items(await renderImages(io, figures, use.result), 'tool', () => use.tool)),
+          .map(async (use) =>
+            items(
+              await renderImages(io, figures, { tool_use_id: use.tool_use_id, tool: use.tool, output: use.result }),
+              'tool',
+              () => use.tool,
+            ),
+          ),
       )
       return [...diagrams, ...tools.flat()]
     }),

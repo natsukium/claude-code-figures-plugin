@@ -1,6 +1,6 @@
 import { expect, test, type Engine } from 'claude-code/testing'
 
-import { missing, readImage, stubWorld } from './support.ts'
+import { PNG_1600x400, PNG_400x1600, missing, readImage, stubWorld } from './support.ts'
 
 const mountToolUse = ($: Engine, output: unknown, tool = 'Read') =>
   $.ui.mount({
@@ -73,6 +73,128 @@ test('a JPEG falls back from magick to sips for the PNG conversion', async ($, o
 
   expect(await ui.find({ type: 'Image' })).toBeDefined()
   expect(runs.find((argv) => argv[0] === 'sips')).toEqual(expect.arrayContaining(['-s', 'format', 'png']))
+})
+
+const sentFile = (path: string) => ({
+  attachments: [{ path, size: 1, isImage: true, media_type: 'image/png' }],
+})
+
+const mountSentResult = (
+  $: Engine,
+  output: unknown,
+  { id = 'toolu_1', requestId, isErrored = false }: { id?: string; requestId?: string; isErrored?: boolean } = {},
+) =>
+  $.ui.mount({
+    plugin: 'figures',
+    surface: 'terminal',
+    component: 'ToolResult',
+    requestId: requestId ?? id,
+    props: { tool_use_id: id, tool: 'SendUserFile', output, isErrored },
+    viewport: { columns: 200, rows: 50 },
+  })
+
+test('an image SendUserFile sent is read from its path and drawn full size under its attachment line', async ($, on) => {
+  const reads: string[] = []
+  stubWorld(on, {
+    read: (path) => {
+      reads.push(path)
+      return { value: { base64: PNG_1600x400 } }
+    },
+  })
+
+  const ui = await mountSentResult($, sentFile('/repo/sent.png'))
+
+  expect(reads).toContain('/repo/sent.png')
+  expect((await ui.find({ type: 'Image' }))?.props).toMatchObject({
+    source: { file: expect.stringMatching(/^\/tmp\/x\/claude-figures\/img-[0-9a-f]{64}\.png$/) },
+    columns: 120,
+  })
+})
+
+test("SendUserFile's tool row is left to the engine, so its image is drawn once", async ($, on) => {
+  const { runs } = stubWorld(on)
+
+  const ui = await mountToolUse($, sentFile('/repo/sent.png'), 'SendUserFile')
+
+  expect(await ui.find({ type: 'Image' })).toBeUndefined()
+  expect(runs).toHaveLength(0)
+})
+
+test('a SendUserFile result whose file is gone is drawn by the engine alone', async ($, on) => {
+  const { runs } = stubWorld(on, { read: () => ({ deny: 'ENOENT' }) })
+
+  const ui = await mountSentResult($, sentFile('/repo/gone.png'))
+
+  expect(await ui.find({ type: 'Image' })).toBeUndefined()
+  expect(runs).toHaveLength(0)
+})
+
+test('a sent file overwritten later keeps the picture its row first drew, while a new send of it draws the new one', async ($, on) => {
+  let current = PNG_1600x400
+  let reads = 0
+  stubWorld(on, {
+    read: () => {
+      reads++
+      return { value: { base64: current } }
+    },
+  })
+
+  const first = await (await mountSentResult($, sentFile('/repo/shot.png'), { id: 'toolu_1' })).find({ type: 'Image' })
+  current = PNG_400x1600
+  const redrawn = await (
+    await mountSentResult($, sentFile('/repo/shot.png'), { id: 'toolu_1', requestId: 'redraw' })
+  ).find({ type: 'Image' })
+  const resent = await (await mountSentResult($, sentFile('/repo/shot.png'), { id: 'toolu_2' })).find({ type: 'Image' })
+
+  expect(reads).toBe(2)
+  expect(redrawn?.props.source).toEqual(first?.props.source)
+  expect(resent?.props.source).not.toEqual(first?.props.source)
+})
+
+test('a SendUserFile result that errored is drawn by the engine alone', async ($, on) => {
+  const { runs } = stubWorld(on)
+
+  const ui = await mountSentResult($, sentFile('/repo/sent.png'), { isErrored: true })
+
+  expect(await ui.find({ type: 'Image' })).toBeUndefined()
+  expect(runs).toHaveLength(0)
+})
+
+test('tool_images=false leaves SendUserFile results alone', { options: { tool_images: false } }, async ($, on) => {
+  const { runs } = stubWorld(on)
+
+  const ui = await mountSentResult($, sentFile('/repo/sent.png'))
+
+  expect(await ui.find({ type: 'Image' })).toBeUndefined()
+  expect(runs).toHaveLength(0)
+})
+
+test('a collapsed tool group holding a SendUserFile call draws its image as a thumbnail', async ($, on) => {
+  stubWorld(on)
+
+  const ui = await $.ui.mount({
+    plugin: 'figures',
+    surface: 'terminal',
+    component: 'ToolGroup',
+    props: {
+      calls: [
+        {
+          tool_use_id: 'toolu_a',
+          tool: 'SendUserFile',
+          input: {},
+          isRunning: false,
+          isErrored: false,
+          isInterrupted: false,
+          output: sentFile('/repo/sent.png'),
+        },
+      ],
+      isActive: false,
+      isExpanded: false,
+    },
+    viewport: { columns: 200, rows: 50 },
+  })
+
+  expect((await ui.find({ type: 'Image' }))?.props).toMatchObject({ rows: 12 })
 })
 
 test('a tool row without an image is drawn by the engine alone', async ($, on) => {
