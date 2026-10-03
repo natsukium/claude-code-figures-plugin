@@ -1,0 +1,99 @@
+{
+  "name": "figures",
+  "version": "0.1.0",
+  "description": "Draw diagrams, LaTeX math, and tool-result images inline in kitty-graphics terminals",
+  "author": {
+    "name": "natsukium",
+    "url": "https://github.com/natsukium"
+  },
+  "homepage": "https://github.com/natsukium/claude-code-figures-plugin",
+  "repository": "https://github.com/natsukium/claude-code-figures-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "claude-code",
+    "mod",
+    "images",
+    "diagrams",
+    "mermaid",
+    "graphviz",
+    "d2",
+    "latex",
+    "mathjax",
+    "kitty-graphics"
+  ],
+  "userConfig": {
+    "theme": {
+      "type": "string",
+      "title": "Theme",
+      "description": "Diagram theme; auto follows Claude Code's light or dark theme. modern is mmdr-only, and mmdc draws it as default",
+      "options": ["auto", "dark", "default", "forest", "neutral", "modern"],
+      "default": "auto"
+    },
+    "background": {
+      "type": "string",
+      "title": "Background",
+      "description": "Diagram background color; transparent lets the terminal background show through",
+      "default": "transparent"
+    },
+    "scale": {
+      "type": "number",
+      "title": "Scale",
+      "description": "Pixel density of the rendered picture; above 1 needs resvg on PATH, otherwise mmdr renders at 1x",
+      "default": 2,
+      "min": 1,
+      "max": 4
+    },
+    "cell_width_px": {
+      "type": "number",
+      "title": "Cell width (px)",
+      "description": "Assumed width of one terminal cell, in the CSS pixels diagrams are laid out in",
+      "default": 8,
+      "min": 1
+    },
+    "cell_aspect": {
+      "type": "number",
+      "title": "Cell aspect",
+      "description": "Assumed height-to-width ratio of one terminal cell",
+      "default": 2.1,
+      "min": 0.5,
+      "max": 4
+    },
+    "max_columns": {
+      "type": "number",
+      "title": "Max columns",
+      "description": "Widest a picture may be, in cells",
+      "default": 120,
+      "min": 1,
+      "max": 255
+    },
+    "max_rows": {
+      "type": "number",
+      "title": "Max rows",
+      "description": "Tallest a picture may be, in cells",
+      "default": 30,
+      "min": 1,
+      "max": 255
+    },
+    "tool_images": {
+      "type": "boolean",
+      "title": "Tool result images",
+      "description": "Draw images found in tool results, such as Read on an image file or a browser screenshot",
+      "default": true
+    },
+    "renderers": {
+      "type": "string",
+      "title": "Renderers",
+      "description": "Renderer ids in preference order, comma-separated: mmdr, mmdc (mermaid), dot, d2, svg, mathjax. A lang with any of its renderers listed uses only those; others keep the default order",
+      "default": ""
+    },
+    "tool_image_max_rows": {
+      "type": "number",
+      "title": "Tool image max rows",
+      "description": "Tallest an image from a tool result may be, in cells; kept small so screenshots do not crowd out the conversation",
+      "default": 12,
+      "min": 1,
+      "max": 255
+    }
+  },
+  "types": "./types/index.d.ts"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "figures",
+  "owner": { "name": "natsukium", "url": "https://github.com/natsukium" },
+  "metadata": {
+    "description": "Inline diagrams, math, and images for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "figures",
+      "source": "./",
+      "description": "Draw diagrams, LaTeX math, and tool-result images inline in kitty-graphics terminals",
+      "tags": ["images", "diagrams", "mermaid", "latex", "kitty-graphics", "mod"]
+    }
+  ]
+}
