@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35
+      - uses: nix-community/cache-nix-action@7df957e333c1e5da7721f60227dbba6d06080569 # v7.0.2
+        with:
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+          purge: true
+          purge-prefixes: nix-${{ runner.os }}-
+          purge-created: 0
+      - name: Check formatting and lints
+        run: nix flake check
+      - name: Install dependencies
+        run: nix develop -c pnpm install --frozen-lockfile
+      - name: Check the vendored build is up to date
+        run: |
+          nix develop -c pnpm build
+          git add -N hooks/vendor
+          git diff --exit-code -- hooks/vendor
+      - name: Unit tests
+        run: nix develop -c pnpm test
+      - name: Type-check
+        run: nix develop -c pnpm typecheck
+      - name: Validate the plugin
+        run: |
+          nix develop -c pnpm exec claude plugin validate --strict .
+          nix develop -c pnpm exec claude plugin validate --strict .claude-plugin/plugin.json
+      - name: Engine tests
+        run: nix develop -c pnpm exec claude plugin test .
+
+  # The README promises this version or later, so typings and the engine
+  # tests run against it as well; raise both together.
+  minimum:
+    runs-on: ubuntu-latest
+    env:
+      CLAUDE_CODE_MINIMUM: 2.1.287
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35
+      - uses: nix-community/cache-nix-action@7df957e333c1e5da7721f60227dbba6d06080569 # v7.0.2
+        with:
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+          save: false
+      - name: Install dependencies with the minimum Claude Code
+        run: |
+          nix develop -c pnpm install --frozen-lockfile
+          nix develop -c pnpm add -D -E "@anthropic-ai/claude-code@$CLAUDE_CODE_MINIMUM"
+      - name: Type-check
+        run: nix develop -c pnpm typecheck
+      - name: Validate the plugin
+        run: |
+          nix develop -c pnpm exec claude plugin validate --strict .
+          nix develop -c pnpm exec claude plugin validate --strict .claude-plugin/plugin.json
+      - name: Engine tests
+        run: nix develop -c pnpm exec claude plugin test .

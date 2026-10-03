@@ -1,0 +1,34 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['config:best-practices', 'schedule:weekly'],
+  timezone: 'Asia/Tokyo',
+  labels: ['dependencies'],
+  automerge: true,
+  prHourlyLimit: 0,
+  // Renovate infers pnpm from lockfileVersion, which 9.0 shares across
+  // several majors; without this it may rewrite the lockfile and
+  // pnpm-workspace.yaml with an older pnpm than the devShell provides.
+  constraints: {
+    pnpm: '^12',
+  },
+  nix: {
+    enabled: true,
+  },
+  lockFileMaintenance: {
+    enabled: true,
+  },
+  packageRules: [
+    {
+      matchPackageNames: ['@mathjax/**'],
+      groupName: 'mathjax',
+    },
+    // The plugin should break on a new engine release the day it ships, not
+    // a week later; the minimum the README promises is guarded by its own CI
+    // job instead.
+    {
+      matchPackageNames: ['@anthropic-ai/claude-code'],
+      schedule: ['at any time'],
+      minimumReleaseAge: null,
+    },
+  ],
+}
