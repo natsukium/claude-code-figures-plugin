@@ -1,4 +1,4 @@
-import { type Figures, blocksOf, renderBlocks, renderImages } from '../figures.ts'
+import { type Figures, type ToolCall, blocksOf, renderBlocks, renderImages } from '../figures.ts'
 import type { Io } from '../io.ts'
 import type { Viewport } from '../layout.ts'
 import type { Outcome } from '../pipeline/index.ts'
@@ -25,14 +25,13 @@ export async function toolUsePictures(
   io: Io,
   figures: Figures,
   el: TerminalElements,
-  tool: string,
-  output: unknown,
+  call: ToolCall,
   viewport: Viewport,
 ) {
   if (!figures.config.toolImages) return undefined
-  const outcomes = await renderImages(io, figures, output)
+  const outcomes = await renderImages(io, figures, call)
   if (outcomes.length === 0) return undefined
-  return pictures(el, outcomes, fullSize(figures.config), viewport, tool)
+  return pictures(el, outcomes, fullSize(figures.config), viewport, call.tool)
 }
 
 // A collapsed group draws one count line and no ToolUse rows, so its
@@ -41,7 +40,7 @@ export async function toolGroupPictures(
   io: Io,
   figures: Figures,
   el: TerminalElements,
-  calls: readonly { tool_use_id?: string; isRunning: boolean; output?: unknown }[],
+  calls: readonly { tool_use_id?: string; tool: string; isRunning: boolean; output?: unknown }[],
   viewport: Viewport,
 ) {
   if (!figures.config.toolImages) return undefined
@@ -49,7 +48,7 @@ export async function toolGroupPictures(
     calls.map((call) =>
       call.tool_use_id === undefined || call.isRunning || call.output === undefined
         ? Promise.resolve([] as Outcome[])
-        : renderImages(io, figures, call.output),
+        : renderImages(io, figures, { tool_use_id: call.tool_use_id, tool: call.tool, output: call.output }),
     ),
   )
   const outcomes = perCall.flat()

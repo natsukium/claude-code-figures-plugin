@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 
 import { blocksIn } from '../../hooks/detect/markdown.ts'
-import { imagesIn } from '../../hooks/detect/tool-output.ts'
+import { imagesIn, sentImagesIn } from '../../hooks/detect/tool-output.ts'
 import { createRegistry } from '../../hooks/renderers/index.ts'
 
 const fence = (lang: string, body: string) => `\`\`\`${lang}\n${body}\n\`\`\`\n`
@@ -40,6 +40,28 @@ test('imagesIn reads the Read, MCP content, and API image shapes and skips other
     { base64: 'BBB', mime: 'image/jpeg' },
     { base64: 'CCC', mime: 'image/webp' },
   ])
+})
+
+test('sentImagesIn takes the raster images SendUserFile sent, inferring a missing media type from the extension', () => {
+  const output = {
+    attachments: [
+      { path: '/repo/shot.png', size: 1, isImage: true, media_type: 'image/png' },
+      { path: '/repo/report.pdf', size: 1, isImage: false, media_type: 'application/pdf' },
+      { path: '/repo/photo.JPG', size: 1, isImage: true },
+      { path: '/repo/diagram.svg', size: 1, isImage: true, media_type: 'image/svg+xml' },
+    ],
+  }
+
+  expect(sentImagesIn('SendUserFile', output)).toEqual([
+    { path: '/repo/shot.png', mime: 'image/png' },
+    { path: '/repo/photo.JPG', mime: 'image/jpeg' },
+  ])
+})
+
+test('sentImagesIn ignores attachments from tools other than SendUserFile', () => {
+  const output = { attachments: [{ path: '/repo/shot.png', size: 1, isImage: true, media_type: 'image/png' }] }
+
+  expect(sentImagesIn('SomeMcpTool', output)).toEqual([])
 })
 
 test('imagesIn stops at its limit', () => {

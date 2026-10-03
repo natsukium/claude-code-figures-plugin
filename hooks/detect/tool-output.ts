@@ -29,3 +29,32 @@ export function imagesIn(output: unknown, limit = 4): FoundImage[] {
   visit(output, 0)
   return found
 }
+
+export type SentImage = { path: string; mime: string }
+
+const MIME_BY_EXTENSION: Record<string, string> = {
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  gif: 'image/gif',
+  webp: 'image/webp',
+}
+
+// SendUserFile returns where its files are, `{ attachments: [{ path, isImage,
+// media_type }] }`, not their bytes.
+export function sentImagesIn(tool: string, output: unknown, limit = 4): SentImage[] {
+  if (tool !== 'SendUserFile' || output === null || typeof output !== 'object') return []
+  const attachments = (output as { attachments?: unknown }).attachments
+  if (!Array.isArray(attachments)) return []
+  const found: SentImage[] = []
+  for (const attachment of attachments) {
+    if (found.length >= limit) break
+    if (attachment === null || typeof attachment !== 'object') continue
+    const { path, isImage, media_type } = attachment as Record<string, unknown>
+    if (typeof path !== 'string' || isImage !== true) continue
+    const mime =
+      typeof media_type === 'string' ? media_type : MIME_BY_EXTENSION[path.split('.').pop()?.toLowerCase() ?? '']
+    if (mime !== undefined && IMAGE_MIME.test(mime)) found.push({ path, mime })
+  }
+  return found
+}
