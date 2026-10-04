@@ -25,7 +25,7 @@ height, and one still smaller says so under it, such as `shown at 43% · /figure
 
 `/figures` opens a pane with the session's pictures, starting on the newest one drawn too small to
 read, or else the newest. `p` and `n` step through them, `o` opens the current one with `open`
-(macOS) or `xdg-open`, and Escape closes the pane.
+(macOS) or `xdg-open`, and Escape or your next prompt closes the pane.
 
 ![The /figures pane beside the transcript, showing the formula from the reply](docs/figures-pane.png)
 
