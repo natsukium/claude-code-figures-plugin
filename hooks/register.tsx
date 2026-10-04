@@ -51,6 +51,13 @@ export const register: Register = (on, options) => {
     return { text: 'Figures pane opened: p/n move, o opens in the system viewer.' }
   })
 
+  // Only the person's own prompt dismisses it; a notification or peer
+  // delivery is not the person moving on.
+  on('prompt.submit', async ($, e, next) => {
+    if (e.origin.kind === 'composer' || e.origin.kind === 'bridge') await $.ui.close({ id: PANE })
+    return next(e)
+  })
+
   on('ui.render', { component: 'Pane', requestId: PANE }, async ($, e, next) => {
     if (e.surface !== 'terminal') return next(e)
     const selection = { index: await read($, selected), set: (index: number) => update($, selected, () => index) }

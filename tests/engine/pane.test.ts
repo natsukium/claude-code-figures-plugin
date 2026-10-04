@@ -1,4 +1,4 @@
-import type { On, SessionMessage } from 'claude-code'
+import type { On, PromptOrigin, SessionMessage } from 'claude-code'
 import { expect, test, type Engine } from 'claude-code/testing'
 
 import { fence, missing, PNG_400x1600, readImage, stubWorld } from './support.ts'
@@ -143,4 +143,30 @@ test('opened without a choice, the figures pane shows the newest picture the tra
   // The Read screenshot is the newest, but only it was drawn as a thumbnail
   // too small to read; the diagrams, at 1600x400, fit their 120 columns.
   expect(await ui.find({ text: /3\/3 Read$/ })).toBeDefined()
+})
+
+const submitAndRecordCloses = async ($: Engine, on: On, origin: PromptOrigin) => {
+  const closed: string[] = []
+  on('ui.close', async (_, e) => {
+    closed.push(e.id)
+    return { value: undefined }
+  })
+  on('prompt.submit', async (_, e) => ({ text: e.text }))
+  const submitted = await $.prompt.submit({ text: 'next question', wait: false, origin })
+  return { closed, submitted }
+}
+
+test('submitting the next prompt from the composer closes the figures pane and lets the prompt through', async ($, on) => {
+  expect(await submitAndRecordCloses($, on, { kind: 'composer' })).toEqual({
+    closed: ['figures'],
+    submitted: { text: 'next question' },
+  })
+})
+
+test('a prompt sent through Remote Control closes the figures pane', async ($, on) => {
+  expect((await submitAndRecordCloses($, on, { kind: 'bridge' })).closed).toEqual(['figures'])
+})
+
+test('a task notification arriving as a prompt leaves the figures pane open', async ($, on) => {
+  expect((await submitAndRecordCloses($, on, { kind: 'task-notification' })).closed).toEqual([])
 })
