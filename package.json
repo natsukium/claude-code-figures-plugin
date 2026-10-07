@@ -9,7 +9,7 @@
     "typecheck": "pnpm types && tsc -p ."
   },
   "devDependencies": {
-    "@anthropic-ai/claude-code": "2.1.292",
+    "@anthropic-ai/claude-code": "2.1.293",
     "@mathjax/mathjax-newcm-font": "4.1.3",
     "@mathjax/src": "4.1.3",
     "@noble/hashes": "2.4.0",
