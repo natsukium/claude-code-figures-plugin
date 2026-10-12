@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "types": "ANTHROPIC_API_KEY=unused timeout 120 claude -p --plugin-dir . hi >/dev/null 2>&1; test -f .claude-plugin/types/tsconfig.json",
+    "types": "CLAUDE_CODE_PLUGIN_DIR_WATCH=1 ANTHROPIC_API_KEY=unused timeout 120 claude -p --plugin-dir . hi >/dev/null 2>&1; test -f .claude-plugin/types/tsconfig.json",
     "build": "pnpm types && vite build",
     "test": "pnpm types && vitest run",
     "typecheck": "pnpm types && tsc -p ."
