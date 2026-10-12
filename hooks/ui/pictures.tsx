@@ -27,7 +27,7 @@ export function pictures(
     if ('error' in outcome) {
       return (
         <Box key={`${label}-${i}`} marginLeft={INDENT}>
-          <Text color="red">
+          <Text color="error">
             {label}: {outcome.error.split('\n')[0]}
           </Text>
         </Box>
