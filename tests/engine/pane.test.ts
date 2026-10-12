@@ -252,3 +252,17 @@ test('/figures run with a collapsed tool group selected opens the pane on the im
 
   expect(await ui.find({ text: /2\/2 Read$/ })).toBeDefined()
 })
+
+test('/figures run again lists the pictures drawn since the pane was last drawn', async ($, on) => {
+  stubWorld(on)
+  const messages = transcript.slice(0, 2)
+  stubTranscript(on, messages)
+  stubSelection(on, { text: '' })
+  const ui = await mountPane($)
+  expect(await ui.find({ text: /1\/1 dot$/ })).toBeDefined()
+
+  messages.push(transcript[2]!)
+  await runFigures($)
+
+  expect(await ui.find({ text: /2\/2 Read$/ })).toBeDefined()
+})

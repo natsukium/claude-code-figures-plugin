@@ -9,6 +9,6 @@ export type GalleryItem = {
 
 declare module 'claude-code' {
   interface PluginState {
-    figures: { selected: number | null }
+    figures: { selected: number | null; opened: number }
   }
 }

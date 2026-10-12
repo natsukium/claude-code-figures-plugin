@@ -12,6 +12,10 @@ import { PANE, drawPane, gallery, selectedIn } from './ui/pane.tsx'
 import { type TerminalElements, type pictures, viewportOf } from './ui/pictures.tsx'
 
 const selected = atom({ plugin: 'figures', key: 'selected' } as const, null)
+// Read by the pane so that each /figures redraws it: the engine does not track
+// the transcript the gallery comes from, and $.ui.invalidate("ui.render")
+// would redraw every transcript row this plugin draws as well.
+const opened = atom({ plugin: 'figures', key: 'opened' } as const, 0)
 
 function ioOf($: EngineInterface): Io {
   return {
@@ -48,6 +52,7 @@ export const register: Register = (on, options) => {
     const selection = await $.ui.selection()
     const index = selection && selectedIn(await gallery(ioOf($), figures), selection, figures.groups)
     if (index !== undefined) await update($, selected, () => index)
+    await update($, opened, (n) => n + 1)
     // The pane is where a picture too small inline is enlarged, so it asks for
     // all the height the layout can spare rather than max_rows.
     await $.ui.open({ id: PANE, title: 'Figures', focus: true, closeOnEscape: true, rows: 255 })
@@ -63,6 +68,7 @@ export const register: Register = (on, options) => {
 
   on('ui.render', { component: 'Pane', requestId: PANE }, async ($, e, next) => {
     if (e.surface !== 'terminal') return next(e)
+    await read($, opened)
     const selection = { index: await read($, selected), set: (index: number) => update($, selected, () => index) }
     return drawPane(ioOf($), figures, $.ui.resolve(e), e.props, viewportOf(e), selection)
   })
