@@ -8,11 +8,11 @@ test('display math is typeset in-process and handed to resvg inked for the theme
   const ui = await mountReply($, 'So $$x^2$$ holds.')
 
   expect(await ui.find({ type: 'Image' })).toBeDefined()
-  expect(runs.map((argv) => argv[0])).toEqual(['resvg'])
+  expect(runs.map((argv) => argv[0])).toEqual(['fc-match', 'resvg'])
   // x^2 is 2.282ex by 2.025ex in MathJax's metrics.
-  expect(stdins[0]).toMatch(/^<svg[^>]*width="18\.3" height="16\.2"/)
-  expect(stdins[0]).toContain('fill="#d4d4d4"')
-  expect(stdins[0]).not.toContain('currentColor')
+  expect(stdins[1]).toMatch(/^<svg[^>]*width="18\.3" height="16\.2"/)
+  expect(stdins[1]).toContain('fill="#d4d4d4"')
+  expect(stdins[1]).not.toContain('currentColor')
 })
 
 test('a glyph outside the base font is looked up in the font range shipped with the plugin, and its absence is an error', async ($, on) => {

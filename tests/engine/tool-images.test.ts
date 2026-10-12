@@ -121,8 +121,8 @@ test('an SVG that Read returned whole is drawn by resvg under the tool row', asy
   })
 
   expect(await ui.find({ type: 'Image' })).toBeDefined()
-  expect(runs.map((argv) => argv[0])).toEqual(['resvg'])
-  expect(stdins[0]).toBe(source)
+  expect(runs.map((argv) => argv[0])).toEqual(['fc-match', 'resvg'])
+  expect(stdins[1]).toBe(source)
 })
 
 test('an SVG and a PNG sent together are drawn in the order they were attached', async ($, on) => {
@@ -156,8 +156,8 @@ test('an SVG SendUserFile sent is read as text and drawn by resvg under its atta
   })
 
   expect(await ui.find({ type: 'Image' })).toBeDefined()
-  expect(runs.map((argv) => argv[0])).toEqual(['resvg'])
-  expect(stdins[0]).toBe(source)
+  expect(runs.map((argv) => argv[0])).toEqual(['fc-match', 'resvg'])
+  expect(stdins[1]).toBe(source)
 })
 
 test("SendUserFile's tool row is left to the engine, so its image is drawn once", async ($, on) => {

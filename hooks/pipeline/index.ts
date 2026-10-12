@@ -5,7 +5,7 @@ import type { Artifact, CodeRequest, Renderer } from '../renderers/types.ts'
 import { Memo, cacheDir, cacheKey } from './cache.ts'
 import { type Exec, MissingCommand, execWith, failure } from './exec.ts'
 import { readPngHeader, readPngSize } from './png.ts'
-import { convertToPng, rasterizeSvg } from './raster.ts'
+import { convertToPng, rasterizeSvg, sansSerifFamily } from './raster.ts'
 
 /** A PNG on disk, with its size at 1x. */
 export type Rendered = { path: string; width: number; height: number }
@@ -19,6 +19,7 @@ export class Pipeline {
   readonly #code = new Memo<Outcome>()
   readonly #images = new Memo<Outcome>()
   #canRasterizeSvg = true
+  #sansSerif: Promise<string | undefined> | undefined
   #dir: Promise<string> | undefined
 
   constructor(registry: Registry) {
@@ -74,7 +75,8 @@ export class Pipeline {
 
     const zoom = Math.max(1, request.scale)
     try {
-      const failed = await rasterizeSvg(exec, artifact.svg, pathAt(zoom), zoom)
+      this.#sansSerif ??= sansSerifFamily(exec)
+      const failed = await rasterizeSvg(exec, artifact.svg, pathAt(zoom), zoom, await this.#sansSerif)
       return failed ?? this.#rendered(io, pathAt(zoom), zoom)
     } catch (error) {
       if (!(error instanceof MissingCommand) || !this.#canRasterizeSvg) throw error

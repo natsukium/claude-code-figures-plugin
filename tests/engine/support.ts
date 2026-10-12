@@ -70,6 +70,7 @@ export function stubWorld(on: On, stubs: Stubs = {}) {
     runs.push([...e.argv])
     stdins.push(e.init?.stdin)
     if (e.argv[2]?.startsWith('head')) return result(0, png.slice(0, 32))
+    if (e.argv[0] === 'fc-match') return result(0, 'DejaVu Sans')
     return stubs.respond?.(e.argv, e.init?.stdin) ?? result(0, '<svg/>')
   })
   return { runs, stdins, writes }

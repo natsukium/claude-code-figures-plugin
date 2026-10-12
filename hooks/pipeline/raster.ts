@@ -5,9 +5,24 @@ export async function rasterizeSvg(
   svg: string,
   path: string,
   zoom: number,
+  sansSerif: string | undefined,
 ): Promise<{ error: string } | undefined> {
-  const png = await exec(['resvg', '--zoom', String(zoom), '-', path], svg)
+  const font = sansSerif ? ['--sans-serif-family', sansSerif] : []
+  const png = await exec(['resvg', ...font, '--zoom', String(zoom), '-', path], svg)
   return png.exitCode === 0 ? undefined : failure('resvg', png)
+}
+
+// resvg resolves font names without fontconfig and maps sans-serif to a font
+// literally named Arial, which most Linux systems lack; text in a family it
+// cannot find is dropped. Without fc-match (macOS), Arial is there anyway.
+export async function sansSerifFamily(exec: Exec): Promise<string | undefined> {
+  try {
+    const result = await exec(['fc-match', '-f', '%{family[0]}', 'sans-serif'])
+    return result.exitCode === 0 ? result.stdout.trim() || undefined : undefined
+  } catch (error) {
+    if (!(error instanceof MissingCommand)) throw error
+    return undefined
+  }
 }
 
 const CONVERTERS = (from: string, to: string) => [

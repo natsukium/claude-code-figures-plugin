@@ -14,13 +14,13 @@ const ok = (stdout = ''): RunResult => ({
   isStderrTruncated: false,
 })
 
-const fakeIo = (missing: string[] = []) => {
+const fakeIo = (missing: string[] = [], stdout: Record<string, string> = {}) => {
   const runs: string[][] = []
   const io: Io = {
     run: async (argv) => {
       runs.push(argv)
       if (missing.includes(argv[0]!)) throw new Error(`spawn ${argv[0]} ENOENT`)
-      return ok()
+      return ok(stdout[argv[0]!])
     },
     exists: async () => false,
     readText: async () => '',
@@ -59,7 +59,36 @@ test('an SVG artifact is rasterized by resvg at the scale and measured at 1x', a
     width: 800,
     height: 200,
   })
-  expect(runs[0]).toEqual(['resvg', '--zoom', '2', '-', expect.any(String)])
+  expect(runs.find((argv) => argv[0] === 'resvg')).toEqual(['resvg', '--zoom', '2', '-', expect.any(String)])
+})
+
+test("resvg draws sans-serif text in fontconfig's sans-serif family", async () => {
+  const { io, runs } = fakeIo([], { 'fc-match': 'DejaVu Sans' })
+  const pipeline = new Pipeline(registryOf(fake('a', async () => ({ kind: 'svg', svg: '<svg/>' }))))
+
+  await pipeline.code(io, request)
+
+  expect(runs.find((argv) => argv[0] === 'resvg')).toEqual(
+    expect.arrayContaining(['--sans-serif-family', 'DejaVu Sans']),
+  )
+})
+
+test('without fc-match, resvg keeps its own sans-serif family', async () => {
+  const { io, runs } = fakeIo(['fc-match'])
+  const pipeline = new Pipeline(registryOf(fake('a', async () => ({ kind: 'svg', svg: '<svg/>' }))))
+
+  expect(await pipeline.code(io, request)).toMatchObject({ width: 800 })
+  expect(runs.find((argv) => argv[0] === 'resvg')).not.toContain('--sans-serif-family')
+})
+
+test('fontconfig is asked once for all renders', async () => {
+  const { io, runs } = fakeIo([], { 'fc-match': 'DejaVu Sans' })
+  const pipeline = new Pipeline(registryOf(fake('a', async () => ({ kind: 'svg', svg: '<svg/>' }))))
+
+  await pipeline.code(io, request)
+  await pipeline.code(io, { ...request, source: 'y' })
+
+  expect(runs.filter((argv) => argv[0] === 'fc-match')).toHaveLength(1)
 })
 
 test('when every renderer of a lang is missing, the block is skipped', async () => {

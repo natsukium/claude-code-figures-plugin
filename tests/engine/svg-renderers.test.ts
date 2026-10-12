@@ -36,7 +36,7 @@ test('an svg fence goes straight to resvg', async ($, on) => {
   const ui = await mountReply($, fence('svg', '<svg xmlns="http://www.w3.org/2000/svg"/>'))
 
   expect(await ui.find({ type: 'Image' })).toBeDefined()
-  expect(runs.map((argv) => argv[0])).toEqual(['resvg'])
+  expect(runs.map((argv) => argv[0])).toEqual(['fc-match', 'resvg'])
 })
 
 test('a dot fence without Graphviz on PATH is left as code, with no error shown', async ($, on) => {
