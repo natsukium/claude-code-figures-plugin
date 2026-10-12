@@ -22,11 +22,25 @@ export type PaneProps = {
 
 // Render hooks may not write state, so the gallery is rebuilt from the
 // transcript; the memos make that a lookup for anything drawn.
-async function collect(io: Io, figures: Figures): Promise<GalleryItem[]> {
-  const items = (outcomes: Outcome[], kind: GalleryItem['kind'], label: (i: number) => string): GalleryItem[] =>
+export async function gallery(io: Io, figures: Figures): Promise<GalleryItem[]> {
+  const items = (
+    outcomes: Outcome[],
+    kind: GalleryItem['kind'],
+    label: (i: number) => string,
+    origin: (i: number) => GalleryItem['origin'],
+  ): GalleryItem[] =>
     outcomes.flatMap((outcome, i) =>
       'path' in outcome
-        ? [{ path: outcome.path, width: outcome.width, height: outcome.height, label: label(i), kind }]
+        ? [
+            {
+              path: outcome.path,
+              width: outcome.width,
+              height: outcome.height,
+              label: label(i),
+              kind,
+              origin: origin(i),
+            },
+          ]
         : [],
     )
   const perMessage = await Promise.all(
@@ -35,7 +49,12 @@ async function collect(io: Io, figures: Figures): Promise<GalleryItem[]> {
       const blocks = blocksOf(figures, message.text)
       const diagrams =
         blocks.length > 0
-          ? items(await renderBlocks(io, figures, blocks), 'diagram', (i) => blocks[i]?.lang ?? 'diagram')
+          ? items(
+              await renderBlocks(io, figures, blocks),
+              'diagram',
+              (i) => blocks[i]?.lang ?? 'diagram',
+              (i) => ({ source: blocks[i]?.source ?? '' }),
+            )
           : []
       if (!figures.config.toolImages) return diagrams
       const tools = await Promise.all(
@@ -46,6 +65,7 @@ async function collect(io: Io, figures: Figures): Promise<GalleryItem[]> {
               await renderImages(io, figures, { tool_use_id: use.tool_use_id, tool: use.tool, output: use.result }),
               'tool',
               () => use.tool,
+              () => ({ toolUseId: use.tool_use_id }),
             ),
           ),
       )
@@ -57,6 +77,26 @@ async function collect(io: Io, figures: Figures): Promise<GalleryItem[]> {
     .flat()
     .filter((item) => !seen.has(item.path) && seen.add(item.path))
     .slice(-GALLERY_SIZE)
+}
+
+const squeeze = (text: string) => text.replace(/\s+/g, ' ').trim()
+
+/**
+ * The newest picture a mouse selection points at: a tool image by the row the
+ * selection lies in, a diagram by source text selected within its block.
+ */
+export function selectedIn(
+  list: GalleryItem[],
+  selection: { text: string; requestId?: string },
+  groups: ReadonlyMap<string, readonly string[]>,
+): number | undefined {
+  const text = squeeze(selection.text)
+  const row = selection.requestId
+  const calls = row === undefined ? [] : (groups.get(row) ?? [row])
+  const index = list.findLastIndex(({ origin }) =>
+    'toolUseId' in origin ? calls.includes(origin.toolUseId) : text !== '' && squeeze(origin.source).includes(text),
+  )
+  return index === -1 ? undefined : index
 }
 
 async function openExternally(io: Io, path: string): Promise<void> {
@@ -83,7 +123,7 @@ export async function drawPane(
   selection: Selection,
 ) {
   const { config } = figures
-  const list = await collect(io, figures)
+  const list = await gallery(io, figures)
   if (list.length === 0) return <Text dimColor>No diagrams or images in this session yet.</Text>
 
   // Opened without a choice, the pane shows the newest picture the

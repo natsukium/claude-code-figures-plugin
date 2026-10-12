@@ -8,7 +8,18 @@ import type { Registry } from './renderers/index.ts'
 import { resolveTheme } from './theme.ts'
 
 /** What every hook shares: the options, the renderers they chose, the pipeline, and the files sent so far. */
-export type Figures = { config: Config; registry: Registry; pipeline: Pipeline; sent: Memo<ToolPicture[]> }
+export type Figures = {
+  config: Config
+  registry: Registry
+  pipeline: Pipeline
+  sent: Memo<ToolPicture[]>
+  /**
+   * The tool_use_ids under each collapsed tool group row drawn so far. A
+   * selection in such a row names it by the group's own requestId, which
+   * the transcript does not carry.
+   */
+  groups: Map<string, string[]>
+}
 
 export const blocksOf = (figures: Figures, text: string): Block[] => blocksIn(text, figures.registry)
 

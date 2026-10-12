@@ -170,3 +170,85 @@ test('a prompt sent through Remote Control closes the figures pane', async ($, o
 test('a task notification arriving as a prompt leaves the figures pane open', async ($, on) => {
   expect((await submitAndRecordCloses($, on, { kind: 'task-notification' })).closed).toEqual([])
 })
+
+// Before 2.1.296 the typings also ask for origin and presentation, which the engine
+// stamps itself; the minimum version runs the call as it is.
+const runFigures = ($: Engine) =>
+  ($.command.run as (input: { command: string; args: string }) => Promise<unknown>)({
+    command: 'figures',
+    args: '',
+  })
+
+const stubSelection = (on: On, selection: { text: string; requestId?: string }) => {
+  on('ui.selection', async () => ({ value: selection }))
+  on('ui.open', async () => ({ value: { isPlaced: true } }))
+}
+
+test('/figures run with diagram source selected opens the pane on that diagram', async ($, on) => {
+  stubWorld(on)
+  stubTranscript(on, transcript)
+  stubSelection(on, { text: 'a -> b' })
+
+  await runFigures($)
+  const ui = await mountPane($)
+
+  expect(await ui.find({ text: /1\/2 dot$/ })).toBeDefined()
+})
+
+test('/figures run with a tool row selected opens the pane on that tool image', async ($, on) => {
+  stubWorld(on)
+  stubTranscript(on, transcript)
+  stubSelection(on, { text: 'Read 1 image', requestId: 'toolu_1' })
+  const ui = await mountPane($)
+  await ui.press({ key: 'prev' })
+
+  await runFigures($)
+
+  expect(await ui.find({ text: /2\/2 Read$/ })).toBeDefined()
+})
+
+test('/figures run with unrelated text selected keeps the picture the pane would show', async ($, on) => {
+  stubWorld(on)
+  stubTranscript(on, transcript)
+  stubSelection(on, { text: 'draw it' })
+  const ui = await mountPane($)
+  await ui.press({ key: 'prev' })
+
+  await runFigures($)
+
+  expect(await ui.find({ text: /1\/2 dot$/ })).toBeDefined()
+})
+
+test('/figures run with a collapsed tool group selected opens the pane on the image in that group', async ($, on) => {
+  stubWorld(on)
+  stubTranscript(on, transcript)
+  stubSelection(on, { text: 'Read 1 file', requestId: 'collapsed-1' })
+  await $.ui.mount({
+    plugin: 'figures',
+    surface: 'terminal',
+    component: 'ToolGroup',
+    requestId: 'collapsed-1',
+    props: {
+      calls: [
+        {
+          tool_use_id: 'toolu_1',
+          tool: 'Read',
+          input: {},
+          isRunning: false,
+          isErrored: false,
+          isInterrupted: false,
+          output: readImage('image/png'),
+        },
+      ],
+      isActive: false,
+      isExpanded: false,
+    },
+    viewport: { columns: 104, rows: 40 },
+  })
+  const ui = await mountPane($)
+  await ui.press({ key: 'prev' })
+
+  await runFigures($)
+
+  expect(await ui.find({ text: /2\/2 Read$/ })).toBeDefined()
+})

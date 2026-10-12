@@ -8,7 +8,7 @@ import { Memo, cacheDir, expire } from './pipeline/cache.ts'
 import { Pipeline } from './pipeline/index.ts'
 import { createRegistry } from './renderers/index.ts'
 import { replyPictures, toolGroupPictures, toolUsePictures } from './ui/inline.tsx'
-import { PANE, drawPane } from './ui/pane.tsx'
+import { PANE, drawPane, gallery, selectedIn } from './ui/pane.tsx'
 import { type TerminalElements, type pictures, viewportOf } from './ui/pictures.tsx'
 
 const selected = atom({ plugin: 'figures', key: 'selected' } as const, null)
@@ -32,7 +32,7 @@ function ioOf($: EngineInterface): Io {
 export const register: Register = (on, options) => {
   const config = parseConfig(options)
   const registry = createRegistry(config.renderers)
-  const figures: Figures = { config, registry, pipeline: new Pipeline(registry), sent: new Memo() }
+  const figures: Figures = { config, registry, pipeline: new Pipeline(registry), sent: new Memo(), groups: new Map() }
 
   on('session.start', async ($, e, next) => {
     const io = ioOf($)
@@ -45,6 +45,9 @@ export const register: Register = (on, options) => {
   })
 
   on('command.run', { command: PANE }, async ($) => {
+    const selection = await $.ui.selection()
+    const index = selection && selectedIn(await gallery(ioOf($), figures), selection, figures.groups)
+    if (index !== undefined) await update($, selected, () => index)
     // The pane is where a picture too small inline is enlarged, so it asks for
     // all the height the layout can spare rather than max_rows.
     await $.ui.open({ id: PANE, title: 'Figures', focus: true, closeOnEscape: true, rows: 255 })
@@ -87,6 +90,12 @@ export const register: Register = (on, options) => {
 
   on('ui.render', { component: 'ToolGroup' }, async ($, e, next) => {
     if (e.surface !== 'terminal' || e.props.isExpanded) return next(e)
+    if (e.requestId !== undefined) {
+      figures.groups.set(
+        e.requestId,
+        e.props.calls.flatMap((call) => (call.tool_use_id === undefined ? [] : [call.tool_use_id])),
+      )
+    }
     const el = $.ui.resolve(e)
     return under(el, () => next(e), await toolGroupPictures(ioOf($), figures, el, e.props.calls, viewportOf(e)))
   })

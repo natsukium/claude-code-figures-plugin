@@ -46,7 +46,7 @@ jobs:
   minimum:
     runs-on: ubuntu-latest
     env:
-      CLAUDE_CODE_MINIMUM: 2.1.287
+      CLAUDE_CODE_MINIMUM: 2.1.288
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35

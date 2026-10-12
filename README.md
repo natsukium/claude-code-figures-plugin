@@ -24,8 +24,10 @@ A picture the size caps would shrink below 60% of its natural size grows up to t
 height, and one still smaller says so under it, such as `shown at 43% · /figures to enlarge`.
 
 `/figures` opens a pane with the session's pictures, starting on the newest one drawn too small to
-read, or else the newest. `p` and `n` step through them, `o` opens the current one with `open`
-(macOS) or `xdg-open`, and Escape or your next prompt closes the pane.
+read, or else the newest. In fullscreen mode, select part of a diagram's source or a tool row with
+the mouse before running it to start on that picture instead. `p` and `n` step through them, `o`
+opens the current one with `open` (macOS) or `xdg-open`, and Escape or your next prompt closes the
+pane.
 
 ![The /figures pane beside the transcript, showing the formula from the reply](docs/figures-pane.png)
 
@@ -38,7 +40,7 @@ days are removed when a session starts.
 
 ## Requirements
 
-Claude Code 2.1.287 or later, with mods (function-hook plugins) enabled, in a terminal it treats as
+Claude Code 2.1.288 or later, with mods (function-hook plugins) enabled, in a terminal it treats as
 kitty-graphics capable; see [Terminal support](#terminal-support). Each kind of picture also needs
 programs on `PATH`:
 
