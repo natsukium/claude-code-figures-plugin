@@ -1,4 +1,4 @@
-//#region node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/sans-serif.js
+// node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/sans-serif.js
 var e = {
 	717: [
 		-.208,
@@ -3863,5 +3863,4 @@ var e = {
 		{ p: "555 1315C525 1311 509 1288 509 1263C509 1228 535 1210 560 1210C585 1210 612 1227 612 1264C612 1310 582 1361 506 1361C417 1361 385 1247 373 1045C372 1034 343 534 372-118C378-271 385-437 382-576C380-652 372-832 297-832C274-832 256-822 247-816C274-810 289-788 289-764C289-729 262-711 238-711C212-711 186-728 186-765C186-819 232-862 294-862C455-862 465-627 474-336C484-21 481 297 467 618C458 830 453 1029 459 1157C462 1205 466 1331 513 1331C528 1331 545 1329 555 1315M138-1124L532-1124C589-1124 589-1046 532-1046L138-1046C81-1046 81-1124 138-1124" }
 	]
 }, y = {}, b = {};
-//#endregion
 export { i as _, g as a, t as b, p as c, u as d, l as f, a as g, o as h, _ as i, f as l, s as m, y as n, h as o, c as p, v as r, m as s, b as t, d as u, r as v, e as x, n as y };

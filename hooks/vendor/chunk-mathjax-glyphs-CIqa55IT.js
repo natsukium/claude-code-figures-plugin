@@ -1,4 +1,4 @@
-//#region node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/bold.js
+// node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/bold.js
 var e = {
 	32: [
 		0,
@@ -4629,5 +4629,4 @@ var e = {
 		}
 	]
 };
-//#endregion
 export { a, n as c, o as i, t as l, c as n, i as o, s as r, r as s, l as t, e as u };

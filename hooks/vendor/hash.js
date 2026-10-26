@@ -1,11 +1,10 @@
-//#region node_modules/.pnpm/@noble+hashes@2.4.0/node_modules/@noble/hashes/_u64.js
+// node_modules/.pnpm/@noble+hashes@2.4.0/node_modules/@noble/hashes/_u64.js
 var e = (e) => e / 2 ** 32 | 0, t = (e) => e >>> 0;
 function n(n, r, i, a) {
 	let o = e(i), s = t(i);
 	n.setUint32(r, a ? s : o, a), n.setUint32(r + 4, a ? o : s, a);
 }
-//#endregion
-//#region node_modules/.pnpm/@noble+hashes@2.4.0/node_modules/@noble/hashes/utils.js
+// node_modules/.pnpm/@noble+hashes@2.4.0/node_modules/@noble/hashes/utils.js
 function r(e) {
 	return e instanceof Uint8Array || ArrayBuffer.isView(e) && e.constructor.name === "Uint8Array" && "BYTES_PER_ELEMENT" in e && e.BYTES_PER_ELEMENT === 1;
 }
@@ -76,8 +75,7 @@ var y = (e) => ({ oid: Uint8Array.from([
 	2,
 	e
 ]) });
-//#endregion
-//#region node_modules/.pnpm/@noble+hashes@2.4.0/node_modules/@noble/hashes/_md.js
+// node_modules/.pnpm/@noble+hashes@2.4.0/node_modules/@noble/hashes/_md.js
 function b(e, t, n) {
 	return e & t ^ ~e & n;
 }
@@ -108,9 +106,7 @@ var S = class {
 				let t = f(e);
 				for (; r <= i - o; o += r) this.process(t, o);
 				a = !0;
-				continue;
-			}
-			n.set(o === 0 && s === i ? e : e.subarray(o, o + s), this.pos), this.pos += s, o += s, this.pos === r && (this.process(t, 0), this.pos = 0, a = !0);
+			} else n.set(o === 0 && s === i ? e : e.subarray(o, o + s), this.pos), this.pos += s, o += s, this.pos === r && (this.process(t, 0), this.pos = 0, a = !0);
 		}
 		return this.length += e.length, a && this.roundClean(), this;
 	}
@@ -271,5 +267,4 @@ var S = class {
 	}
 	return Uint8Array.from(t);
 }, A = (e) => g(O(k(e)));
-//#endregion
 export { A as sha256Hex };

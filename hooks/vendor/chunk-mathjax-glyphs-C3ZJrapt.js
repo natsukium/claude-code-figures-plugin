@@ -1,4 +1,4 @@
-//#region node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/normal.js
+// node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/normal.js
 var e = {
 	32: [
 		0,
@@ -7930,5 +7930,4 @@ var e = {
 		{ p: "" }
 	]
 };
-//#endregion
 export { e as n, t };

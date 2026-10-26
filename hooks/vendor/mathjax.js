@@ -1,7 +1,7 @@
-import { n as e, t } from "./chunk-mathjax-glyphs-CDRzZSH6.js";
-import { a as n, c as r, i, l as a, n as o, o as s, r as c, s as l, t as u, u as d } from "./chunk-mathjax-glyphs-C7Z3kWTk.js";
-import { _ as f, a as p, b as m, c as h, d as g, f as ee, g as te, h as ne, i as re, l as ie, m as ae, n as oe, o as se, p as ce, r as le, s as ue, t as de, u as fe, v as pe, x as me, y as he } from "./chunk-mathjax-glyphs-3NV1ybv8.js";
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/components/version.js
+import { n as e, t } from "./chunk-mathjax-glyphs-C3ZJrapt.js";
+import { a as n, c as r, i, l as a, n as o, o as s, r as c, s as l, t as u, u as d } from "./chunk-mathjax-glyphs-CIqa55IT.js";
+import { _ as f, a as p, b as m, c as h, d as g, f as ee, g as te, h as ne, i as re, l as ie, m as ae, n as oe, o as se, p as ce, r as le, s as ue, t as de, u as fe, v as pe, x as me, y as he } from "./chunk-mathjax-glyphs-tEs9ZklA.js";
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/components/version.js
 var ge = "4.1.3", _e = class e {
 	constructor() {
 		this.items = [], this.items = [];
@@ -34,8 +34,7 @@ var ge = "4.1.3", _e = class e {
 	}
 };
 _e.DEFAULTPRIORITY = 5;
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/HandlerList.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/HandlerList.js
 var ve = class extends _e {
 	register(e) {
 		return this.add(e, e.priority);
@@ -54,8 +53,7 @@ var ve = class extends _e {
 		return this.handlesDocument(e).create(e, t);
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/Retries.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/Retries.js
 function ye(e) {
 	return new Promise(function t(n, r) {
 		let i = (e) => {
@@ -73,8 +71,7 @@ function be(e) {
 	let t = /* @__PURE__ */ Error("MathJax retry -- an asynchronous action is required; try using one of the promise-based functions and await its resolution.");
 	throw t.retry = e, t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/context.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/context.js
 var xe = typeof window < "u", Se = typeof exports < "u", Ce = {
 	window: xe ? window : null,
 	document: xe ? window.document : null,
@@ -105,8 +102,7 @@ var xe = typeof window < "u", Se = typeof exports < "u", Ce = {
 	path: (e) => e
 };
 Ce.os === "Windows" && (Ce.path = (e) => e.match(/^[/\\]?[a-zA-Z]:[/\\]/) ? (Se ? "" : "file://") + e.replace(/\\/g, "/").replace(/^\//, "") : e.replace(/^\//, "file:///"));
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/mathjax.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/mathjax.js
 var we = {
 	version: ge,
 	context: Ce,
@@ -178,8 +174,7 @@ function Fe(e, ...t) {
 function Ie(e, t, n = null) {
 	return Object.hasOwn(t, e) ? t[e] : n;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/FunctionList.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/FunctionList.js
 var Le = class extends _e {
 	constructor(e = null) {
 		super(), e && this.addList(e);
@@ -246,8 +241,7 @@ Re.NAME = "generic", Re.OPTIONS = {
 	preFilters: [],
 	postFilters: []
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/FindMath.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/FindMath.js
 var ze = class {
 	constructor(e) {
 		let t = this.constructor;
@@ -255,8 +249,7 @@ var ze = class {
 	}
 };
 ze.OPTIONS = {};
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/string.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/string.js
 function Be(e, t) {
 	return e.length === t.length ? e === t ? 0 : e < t ? -1 : 1 : t.length - e.length;
 }
@@ -278,8 +271,7 @@ function Ge(e) {
 function Ke(e) {
 	return e.replace(/\\U(?:([0-9A-Fa-f]{4})|\{\s*([0-9A-Fa-f]{1,6})\s*\})|\\./g, (e, t, n) => e === "\\\\" ? "\\" : String.fromCodePoint(parseInt(t || n, 16)));
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MathItem.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MathItem.js
 function qe(e, t, n, r, i, a, o = null) {
 	return {
 		open: e,
@@ -355,8 +347,7 @@ function Ye(e, t) {
 	if (e in v) throw Error("State " + e + " already exists");
 	v[e] = t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/FindTeX.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/FindTeX.js
 var Xe = class extends ze {
 	constructor(e) {
 		super(e), this.getPatterns();
@@ -414,8 +405,7 @@ Xe.OPTIONS = {
 	processEnvironments: !0,
 	processRefs: !0
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/Attributes.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/Attributes.js
 var y = "_inherit_", Ze = class {
 	constructor(e, t) {
 		this.global = t, this.defaults = Object.create(t), this.inherited = Object.create(this.defaults), this.attributes = Object.create(this.inherited), Object.assign(this.defaults, e);
@@ -1110,8 +1100,7 @@ var ot = class extends $e {
 		return "XML data";
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/OperatorDictionary.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/OperatorDictionary.js
 function w(e, t, n = b.BIN, r = null) {
 	return [
 		e,
@@ -2981,24 +2970,7 @@ E.defaults = Object.assign(Object.assign({}, S.defaults), {
 	indentshiftfirst: "indentshift",
 	indentalignlast: "indentalign",
 	indentshiftlast: "indentshift"
-}), E.MMLSPACING = dt, E.OPTABLE = ft, E.pseudoScripts = new RegExp([
-	"^[\"'*`",
-	"ª",
-	"°",
-	"²-´",
-	"¹",
-	"º",
-	"‘-‟",
-	"′-‷⁗",
-	"⁰ⁱ",
-	"⁴-ⁿ",
-	"₀-₎",
-	"]+$"
-].join("")), E.primes = new RegExp([
-	"^[\"'",
-	"‘-‟",
-	"]+$"
-].join("")), E.opPattern = /^[a-zA-Z]{2,}$/, E.remapPrimes = {
+}), E.MMLSPACING = dt, E.OPTABLE = ft, E.pseudoScripts = /* @__PURE__ */ RegExp("^[\"'*`ª°²-´¹º‘-‟′-‷⁗⁰ⁱ⁴-ⁿ₀-₎]+$"), E.primes = /* @__PURE__ */ RegExp("^[\"'‘-‟]+$"), E.opPattern = /^[a-zA-Z]{2,}$/, E.remapPrimes = {
 	34: 8243,
 	39: 8242,
 	8216: 8245,
@@ -3009,32 +2981,8 @@ E.defaults = Object.assign(Object.assign({}, S.defaults), {
 	8221: 8243,
 	8222: 8243,
 	8223: 8246
-}, E.mathaccents = new RegExp([
-	"^[",
-	"´́ˊ",
-	"`̀ˋ",
-	"¨̈",
-	"~̃˜",
-	"¯̄ˉ",
-	"˘̆",
-	"ˇ̌",
-	"^̂ˆ",
-	"⃐⃑",
-	"⃖⃗⃡",
-	"˙̇",
-	"˚̊",
-	"⃛",
-	"⃜",
-	"]$"
-].join("")), E.mathaccentsWithWidth = new RegExp([
-	"^[",
-	"←→↔",
-	"⏜⏝",
-	"⏞⏟",
-	"]$"
-].join(""));
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/NodeUtil.js
+}, E.mathaccents = /* @__PURE__ */ RegExp("^[´́ˊ`̀ˋ¨̈~̃˜¯̄ˉ˘̆ˇ̌^̂ˆ⃐⃑⃖⃗⃡˙̇˚̊⃛⃜]$"), E.mathaccentsWithWidth = /* @__PURE__ */ RegExp("^[←→↔⏜⏝⏞⏟]$");
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/NodeUtil.js
 var D = {
 	attrs: /* @__PURE__ */ new Set([
 		"autoOP",
@@ -3271,8 +3219,7 @@ var D = {
 		LATEXITEM: "data-latex-item"
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/FilterUtil.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/FilterUtil.js
 function pt(e, t, n) {
 	let r = t.attributes, i = n.attributes;
 	e.forEach((e) => {
@@ -3370,8 +3317,7 @@ var A;
 (function(e) {
 	e.DELIMITER = "delimiter", e.MACRO = "macro", e.CHARACTER = "character", e.ENVIRONMENT = "environment";
 })(A ||= {});
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/UnitUtil.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/UnitUtil.js
 var vt = class {
 	constructor(e) {
 		this.num = "([-+]?([.,]\\d+|\\d+([.,]\\d*)?))", this.unit = "", this.dimenEnd = /./, this.dimenRest = /./, this.map = new Map(e), this.updateDimen();
@@ -3452,13 +3398,7 @@ var j = {
 			let e = D.isNode(t) ? this._factory.create("mml", t) : t;
 			e.global = this.global;
 			let [n, r] = this.stack.length ? this.Top().checkItem(e) : [null, !0];
-			if (r) {
-				if (n) {
-					this.Pop(), this.Push(...n);
-					continue;
-				}
-				e.isKind("null") || this.stack.push(e), e.env ? (e.copyEnv && Object.assign(e.env, this.env), this.env = e.env) : e.env = this.env;
-			}
+			r && (n ? (this.Pop(), this.Push(...n)) : (e.isKind("null") || this.stack.push(e), e.env ? (e.copyEnv && Object.assign(e.env, this.env), this.env = e.env) : e.env = this.env));
 		}
 	}
 	Pop() {
@@ -3492,8 +3432,7 @@ var j = {
 	}
 };
 M.pattern = /%(\d+|\{\d+\}|\{[a-z]+:%\d+(?:\|(?:%\{\d+\}|%.|[^}])*)+\}|.)/g;
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/StackItem.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/StackItem.js
 var Ct = class {
 	constructor(e) {
 		this._nodes = e, this.startStr = "", this.startI = 0, this.stopI = 0;
@@ -3608,8 +3547,7 @@ N.fail = [null, !1], N.success = [null, !0], N.errors = {
 	right: ["MissingLeftExtraRight", "Missing \\left or extra \\right"],
 	middle: ["ExtraMiddle", "Extra \\middle"]
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/TexParser.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/TexParser.js
 var P = class e {
 	constructor(e, t, n) {
 		this._string = e, this.configuration = n, this.macroCount = 0, this.i = 0, this.currentCS = "", this.saveI = 0;
@@ -3873,16 +3811,14 @@ var P = class e {
 	}
 };
 wt.defaultNodes = {};
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/StackItemFactory.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/StackItemFactory.js
 var Tt = class extends N {}, Et = class extends wt {
 	constructor() {
 		super(...arguments), this.defaultKind = "dummy", this.configuration = null;
 	}
 };
 Et.DefaultStackItems = { [Tt.prototype.kind]: Tt };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/NodeFactory.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/NodeFactory.js
 var Dt = class e {
 	constructor() {
 		this.mmlFactory = null, this.factory = {
@@ -3924,16 +3860,14 @@ var Dt = class e {
 		return this.factory[e];
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/AsyncLoad.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/AsyncLoad.js
 function Ot(e) {
 	return we.asyncLoad ? new Promise((t, n) => {
 		let r = we.asyncLoad(e);
 		r instanceof Promise ? r.then((e) => t(e)).catch((e) => n(e)) : t(r);
 	}) : Promise.reject(`Can't load '${e}': No mathjax.asyncLoad method specified`);
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/Entities.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/Entities.js
 var kt = { loadMissingEntities: !0 }, At = {
 	ApplyFunction: "⁡",
 	Backslash: "∖",
@@ -4358,8 +4292,7 @@ function Pt(e) {
 	let t = e.charAt(0) === "x" ? parseInt(e.slice(1), 16) : parseInt(e);
 	return String.fromCodePoint(t);
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/ParseUtil.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/ParseUtil.js
 var Ft = class {
 	static oneof(...e) {
 		return new this("string", (t) => e.includes(t), (e) => e);
@@ -4781,8 +4714,7 @@ Vt.getVariant = /* @__PURE__ */ new Map([
 	["French", (e) => e.normalize("NFD").match(/^[a-z]/) ? Bt.ITALIC : Bt.NORMAL],
 	["upright", (e) => Bt.NORMAL]
 ]);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/Tags.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/Tags.js
 var Ht = class {
 	constructor(e = "???", t = "") {
 		this.tag = e, this.id = t;
@@ -4959,8 +4891,7 @@ var Ht = class {
 		return this._args;
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/TokenMap.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/TokenMap.js
 function Xt(e) {
 	return e === void 0 || e;
 }
@@ -5303,33 +5234,10 @@ function wn(e) {
 }
 var Tn = {
 	style: /^(?:normal|italic|oblique|inherit|initial|unset)$/,
-	variant: RegExp("^(?:" + [
-		"normal|none",
-		"inherit|initial|unset",
-		"common-ligatures|no-common-ligatures",
-		"discretionary-ligatures|no-discretionary-ligatures",
-		"historical-ligatures|no-historical-ligatures",
-		"contextual|no-contextual",
-		"(?:stylistic|character-variant|swash|ornaments|annotation)\\([^)]*\\)",
-		"small-caps|all-small-caps|petite-caps|all-petite-caps|unicase|titling-caps",
-		"lining-nums|oldstyle-nums|proportional-nums|tabular-nums",
-		"diagonal-fractions|stacked-fractions",
-		"ordinal|slashed-zero",
-		"jis78|jis83|jis90|jis04|simplified|traditional",
-		"full-width|proportional-width",
-		"ruby"
-	].join("|") + ")$"),
+	variant: /* @__PURE__ */ RegExp("^(?:normal|none|inherit|initial|unset|common-ligatures|no-common-ligatures|discretionary-ligatures|no-discretionary-ligatures|historical-ligatures|no-historical-ligatures|contextual|no-contextual|(?:stylistic|character-variant|swash|ornaments|annotation)\\([^)]*\\)|small-caps|all-small-caps|petite-caps|all-petite-caps|unicase|titling-caps|lining-nums|oldstyle-nums|proportional-nums|tabular-nums|diagonal-fractions|stacked-fractions|ordinal|slashed-zero|jis78|jis83|jis90|jis04|simplified|traditional|full-width|proportional-width|ruby)$"),
 	weight: /^(?:normal|bold|bolder|lighter|[1-9]00|inherit|initial|unset)$/,
-	stretch: RegExp("^(?:" + [
-		"normal",
-		"(?:(?:ultra|extra|semi)-)?(?:condensed|expanded)",
-		"inherit|initial|unset"
-	].join("|") + ")$"),
-	size: RegExp("^(?:" + [
-		"xx-small|x-small|small|medium|large|x-large|xx-large|larger|smaller",
-		"[\\d.]+%|[\\d.]+[a-z]+",
-		"inherit|initial|unset"
-	].join("|") + ")(?:/(?:normal|[\\d.]+(?:%|[a-z]+)?))?$")
+	stretch: /* @__PURE__ */ RegExp("^(?:normal|(?:(?:ultra|extra|semi)-)?(?:condensed|expanded)|inherit|initial|unset)$"),
+	size: /* @__PURE__ */ RegExp("^(?:xx-small|x-small|small|medium|large|x-large|xx-large|larger|smaller|[\\d.]+%|[\\d.]+[a-z]+|inherit|initial|unset)(?:/(?:normal|[\\d.]+(?:%|[a-z]+)?))?$")
 };
 function En(e) {
 	let t = gn(this.styles[e]), n = {
@@ -5377,7 +5285,7 @@ var I = class e {
 		let t = [];
 		for (let n of Object.keys(this.styles)) {
 			let r = this.parentName(n), i = n.replace(/.*-/, ""), a = this.childName(this.parentName(r), i);
-			this.styles[n] && !this.styles[a] && (!this.styles[r] || !(e.connect[r]?.children)?.includes(i)) && t.push(`${n}: ${this.styles[n]};`);
+			!this.styles[n] || this.styles[a] || this.styles[r] && (e.connect[r]?.children)?.includes(i) || t.push(`${n}: ${this.styles[n]};`);
 		}
 		return t.join(" ");
 	}
@@ -5387,11 +5295,8 @@ var I = class e {
 	set(t, n) {
 		t = this.normalizeName(t), this.setStyle(t, String(n));
 		let r = e.connect[t];
-		if (r?.subPart) {
-			r.combine.call(this, t);
-			return;
-		}
-		if (this.combineParent(t), t.match(/-.*-/)) {
+		if (r?.subPart) r.combine.call(this, t);
+		else if (this.combineParent(t), t.match(/-.*-/)) {
 			let e = t.replace(/-.*-/, "-");
 			xn.call(this, e);
 		}
@@ -5516,8 +5421,7 @@ I.pattern = {
 		combine: On
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/base/BaseItems.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/base/BaseItems.js
 var kn = class extends N {
 	constructor(e, t) {
 		super(e), this.global = t;
@@ -6104,8 +6008,7 @@ function R(e) {
 function or(e, t = -1e6, n = 16) {
 	return e *= n, t && e < t && (e = t), Math.abs(e) < .1 ? "0" : e.toFixed(1).replace(/\.0$/, "") + "px";
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/base/BaseMethods.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/base/BaseMethods.js
 var sr = 1.2 / .85, cr = {
 	fontfamily: 1,
 	fontsize: 1,
@@ -7671,8 +7574,7 @@ new Qt("letter", B.variable, /[a-z]/i), new Qt("digit", B.digit, /[0-9.,]/), new
 	"⊵": "⋭",
 	"∃": "∄"
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/base/BaseConfiguration.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/base/BaseConfiguration.js
 var pr = O.Variant;
 new en("remap", null, {
 	"-": "−",
@@ -7763,8 +7665,7 @@ un.create("base", {
 	[k.TAGS]: { base: vr },
 	[k.POSTPROCESSORS]: [[_r, -4]]
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex.js
 var yr = class e extends Re {
 	static configure(e) {
 		let t = new pn(e, ["tex"]);
@@ -7828,8 +7729,7 @@ yr.NAME = "TeX", yr.OPTIONS = Object.assign(Object.assign({}, Re.OPTIONS), {
 	mathStyle: "TeX",
 	formatError: (e, t) => e.formatError(t)
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/OutputJax.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/OutputJax.js
 var br = class {
 	constructor(e = {}) {
 		this.adaptor = null;
@@ -7864,8 +7764,7 @@ br.NAME = "generic", br.OPTIONS = {
 	preFilters: [],
 	postFilters: []
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Direction.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Direction.js
 var H = {
 	None: "",
 	Vertical: "v",
@@ -8473,8 +8372,7 @@ G.OPTIONS = {
 	extra_ic: .033,
 	extender_factor: .333
 }, G.defaultDelimiters = {}, G.defaultChars = {}, G.defaultSizeVariants = [], G.defaultStretchVariants = [], G.dynamicFiles = {}, G.dynamicExtensions = /* @__PURE__ */ new Map();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/Tree/Visitor.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/Tree/Visitor.js
 var Er = class e {
 	static methodName(e) {
 		return "visit" + (e.charAt(0).toUpperCase() + e.substring(1)).replace(/[^a-z0-9_]/gi, "_") + "Node";
@@ -8566,8 +8464,7 @@ K.fullWidth = "100%", K.boxSides = [
 		"w"
 	]
 ];
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/LineBBox.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/LineBBox.js
 var q = class e extends K {
 	static from(e, t, n = null) {
 		let r = new this();
@@ -8860,8 +8757,7 @@ var q = class e extends K {
 	}
 	ft.infix["⁡"] = [...ft.infix["⁡"]], ft.infix["⁡"][3] = { linebreak: "nobreak" };
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/StyleJson.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/StyleJson.js
 var Ar = class {
 	get cssText() {
 		return this.getStyleString();
@@ -8964,7 +8860,7 @@ var Ar = class {
 		else if (a.isEmbellished) {
 			if (a === e.childNodes[0]) continue;
 			let o = a.coreMO(), s = o.texClass, c = o.attributes.get("linebreak"), l = o.attributes.get("linebreakstyle");
-			(s === b.BIN || s === b.REL || s === b.ORD && o.hasSpacingAttributes() || c !== "auto") && c !== "nobreak" && (l === "before" ? (!n || c !== "auto") && (r = this.markInlineBreak(r, t, c, e, a, o)) : i = c), n = c === "newline" && l === "after";
+			(s === b.BIN || s === b.REL || s === b.ORD && o.hasSpacingAttributes() || c !== "auto") && c !== "nobreak" && (l === "before" ? n && c === "auto" || (r = this.markInlineBreak(r, t, c, e, a, o)) : i = c), n = c === "newline" && l === "after";
 		} else if (a.isKind("mspace")) {
 			let i = a.attributes.get("linebreak");
 			i !== "nobreak" && a.canBreak && (r = this.markInlineBreak(r, t, i, e, a)), n = i === "newline";
@@ -9176,8 +9072,7 @@ Mr.NAME = "Common", Mr.OPTIONS = Object.assign(Object.assign({}, br.OPTIONS), {
 		"justify-content": "right"
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/Tree/WrapperFactory.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/Tree/WrapperFactory.js
 var Nr = class extends wt {
 	wrap(e, ...t) {
 		return this.create(e.kind, e, ...t);
@@ -9191,8 +9086,7 @@ var Nr = class extends wt {
 	}
 };
 Pr.defaultNodes = {};
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/Tree/Wrapper.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/Tree/Wrapper.js
 var Fr = class {
 	get kind() {
 		return this.node.kind;
@@ -9507,7 +9401,7 @@ var zr = {
 	}
 	processIndent(e, t, n = "", r = "", i = this.metrics.containerWidth) {
 		if (!this.jax.math.display) return ["left", 0];
-		(!n || n === "auto") && (n = this.jax.math.root.getProperty("inlineMarked") ? "left" : this.jax.options.displayAlign), (!r || r === "auto") && (r = this.jax.math.root.getProperty("inlineMarked") ? "0" : this.jax.options.displayIndent), e === "auto" && (e = n), t === "auto" && (t = r, e === "right" && !t.match(/^\s*0[a-z]*\s*$/) && (t = ("-" + t.trim()).replace(/^--/, "")));
+		n && n !== "auto" || (n = this.jax.math.root.getProperty("inlineMarked") ? "left" : this.jax.options.displayAlign), r && r !== "auto" || (r = this.jax.math.root.getProperty("inlineMarked") ? "0" : this.jax.options.displayIndent), e === "auto" && (e = n), t === "auto" && (t = r, e === "right" && !t.match(/^\s*0[a-z]*\s*$/) && (t = ("-" + t.trim()).replace(/^--/, "")));
 		let a = this.length2em(t, i);
 		return [e, a];
 	}
@@ -9626,8 +9520,7 @@ Br.kind = "unknown", Br.styles = {}, Br.removeStyles = [
 		"sans-serif-bold-italic": "bold-sans-serif"
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrapper.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrapper.js
 var J = class e extends Br {
 	constructor() {
 		super(...arguments), this.dx = 0, this.utext = "";
@@ -9822,7 +9715,7 @@ var J = class e extends Br {
 	}
 	handleAttributes() {
 		let t = this.adaptor, n = this.node.attributes, r = n.getAllDefaults(), i = e.skipAttributes;
-		for (let e of n.getExplicitNames()) (i[e] === !1 || !(e in r) && !i[e] && !t.hasAttribute(this.dom[0], e)) && this.dom.forEach((r) => t.setAttribute(r, e, n.getExplicit(e)));
+		for (let e of n.getExplicitNames()) i[e] !== !1 && (e in r || i[e] || t.hasAttribute(this.dom[0], e)) || this.dom.forEach((r) => t.setAttribute(r, e, n.getExplicit(e)));
 		if (n.get("class")) for (let e of Ge(n.get("class"))) this.dom.forEach((n) => t.addClass(n, e));
 	}
 	place(e, t, n = null) {
@@ -9917,8 +9810,7 @@ var J = class e extends Br {
 	}
 };
 J.kind = "unknown", J.borderFuzz = .005;
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/math.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/math.js
 function Vr(e) {
 	return class extends e {
 		getWrapWidth(e) {
@@ -9934,8 +9826,7 @@ function Vr(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/math.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/math.js
 var Hr = class extends at {
 	get kind() {
 		return "math";
@@ -9983,33 +9874,8 @@ Hr.defaults = Object.assign(Object.assign({}, at.defaults), {
 	indentalignlast: "indentalign",
 	indentshiftlast: "indentshift"
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/zero.js
-var Ur = [
-	"url(data:application/x-font-woff;charset=utf-8;base64,",
-	"T1RUTwAJAIAAAwAQQ0ZGIGnFMZkAAARQAAAAlE9TLzJpUWOBAAABAAAAAGBjbWFwAAwAUwAABAQAAAAs",
-	"aGVhZCFRvpAAAACcAAAANmhoZWEC8AD9AAAA1AAAACRobXR4A+gAAAAABOQAAAAIbWF4cAACUAAAAAD4",
-	"AAAABm5hbWVNb8+2AAABYAAAAqNwb3N0AAMAAAAABDAAAAAgAAEAAAABAABVWOu4Xw889QADA+gAAAAA",
-	"3ym+2AAAAADfKb7YAAAAAAPoAAAAAAADAAIAAAAAAAAAAQAAAu79EgAAA+gAAAAAAAAAAQAAAAAAAAAA",
-	"AAAAAAAAAAIAAFAAAAIAAAADA+gB9AAFAAACigK7AAAAjAKKArsAAAHfADEBAgAAAAAAAAAAAAAAAAAA",
-	"AAEAAAAAAAAAAAAAAABYWFhYAEAAIAAgAu79EgAAAu4C7gAAAAEAAAAAAXcAAAAgACAAAAAAACIBngAB",
-	"AAAAAAAAAAEAQQABAAAAAAABAAsAAAABAAAAAAACAAcAIQABAAAAAAADABUAxgABAAAAAAAEABMANgAB",
-	"AAAAAAAFAAsApQABAAAAAAAGABIAbwABAAAAAAAHAAEAQQABAAAAAAAIAAEAQQABAAAAAAAJAAEAQQAB",
-	"AAAAAAAKAAEAQQABAAAAAAALAAEAQQABAAAAAAAMAAEAQQABAAAAAAANAAEAQQABAAAAAAAOAAEAQQAB",
-	"AAAAAAAQAAsAAAABAAAAAAARAAcAIQADAAEECQAAAAIAXwADAAEECQABABYACwADAAEECQACAA4AKAAD",
-	"AAEECQADACoA2wADAAEECQAEACYASQADAAEECQAFABYAsAADAAEECQAGACQAgQADAAEECQAHAAIAXwAD",
-	"AAEECQAIAAIAXwADAAEECQAJAAIAXwADAAEECQAKAAIAXwADAAEECQALAAIAXwADAAEECQAMAAIAXwAD",
-	"AAEECQANAAIAXwADAAEECQAOAAIAXwADAAEECQAQABYACwADAAEECQARAA4AKG1qeC1sbS16ZXJvAG0A",
-	"agB4AC0AbABtAC0AegBlAHIAb1JlZ3VsYXIAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvIFJlZ3VsYXIA",
-	"bQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvUmVndWxhcgBtAGoA",
-	"eAAtAGwAbQAtAHoAZQByAG8AUgBlAGcAdQBsAGEAclZlcnNpb24gMC4xAFYAZQByAHMAaQBvAG4AIAAw",
-	"AC4AMSA6bWp4LWxtLXplcm8gUmVndWxhcgAgADoAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcA",
-	"dQBsAGEAcgAAAAABAAMAAQAAAAwABAAgAAAABAAEAAEAAAAg//8AAAAg////4QABAAAAAAADAAAAAAAA",
-	"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEAQABAQETbWp4LWxtLXplcm9SZWd1bGFyAAEBASf4GwD4",
-	"HAL4HQP4HgSLi/mC+nwFHQAAAIYPHQAAAIkRix0AAACUEgAFAQEMHyoxNlZlcnNpb24gMC4xbWp4LWxt",
-	"LXplcm8gUmVndWxhcm1qeC1sbS16ZXJvUmVndWxhcnNwYWNlAAAAAYsAAgEBAwaLDvp8DgAAAAAD6AAA",
-	") format(\"woff\")"
-].join(""), Wr = (function() {
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/zero.js
+var Ur = "url(data:application/x-font-woff;charset=utf-8;base64,T1RUTwAJAIAAAwAQQ0ZGIGnFMZkAAARQAAAAlE9TLzJpUWOBAAABAAAAAGBjbWFwAAwAUwAABAQAAAAsaGVhZCFRvpAAAACcAAAANmhoZWEC8AD9AAAA1AAAACRobXR4A+gAAAAABOQAAAAIbWF4cAACUAAAAAD4AAAABm5hbWVNb8+2AAABYAAAAqNwb3N0AAMAAAAABDAAAAAgAAEAAAABAABVWOu4Xw889QADA+gAAAAA3ym+2AAAAADfKb7YAAAAAAPoAAAAAAADAAIAAAAAAAAAAQAAAu79EgAAA+gAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAFAAAAIAAAADA+gB9AAFAAACigK7AAAAjAKKArsAAAHfADEBAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABYWFhYAEAAIAAgAu79EgAAAu4C7gAAAAEAAAAAAXcAAAAgACAAAAAAACIBngABAAAAAAAAAAEAQQABAAAAAAABAAsAAAABAAAAAAACAAcAIQABAAAAAAADABUAxgABAAAAAAAEABMANgABAAAAAAAFAAsApQABAAAAAAAGABIAbwABAAAAAAAHAAEAQQABAAAAAAAIAAEAQQABAAAAAAAJAAEAQQABAAAAAAAKAAEAQQABAAAAAAALAAEAQQABAAAAAAAMAAEAQQABAAAAAAANAAEAQQABAAAAAAAOAAEAQQABAAAAAAAQAAsAAAABAAAAAAARAAcAIQADAAEECQAAAAIAXwADAAEECQABABYACwADAAEECQACAA4AKAADAAEECQADACoA2wADAAEECQAEACYASQADAAEECQAFABYAsAADAAEECQAGACQAgQADAAEECQAHAAIAXwADAAEECQAIAAIAXwADAAEECQAJAAIAXwADAAEECQAKAAIAXwADAAEECQALAAIAXwADAAEECQAMAAIAXwADAAEECQANAAIAXwADAAEECQAOAAIAXwADAAEECQAQABYACwADAAEECQARAA4AKG1qeC1sbS16ZXJvAG0AagB4AC0AbABtAC0AegBlAHIAb1JlZ3VsYXIAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvIFJlZ3VsYXIAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvUmVndWxhcgBtAGoAeAAtAGwAbQAtAHoAZQByAG8AUgBlAGcAdQBsAGEAclZlcnNpb24gMC4xAFYAZQByAHMAaQBvAG4AIAAwAC4AMSA6bWp4LWxtLXplcm8gUmVndWxhcgAgADoAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcgAAAAABAAMAAQAAAAwABAAgAAAABAAEAAEAAAAg//8AAAAg////4QABAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEAQABAQETbWp4LWxtLXplcm9SZWd1bGFyAAEBASf4GwD4HAL4HQP4HgSLi/mC+nwFHQAAAIYPHQAAAIkRix0AAACUEgAFAQEMHyoxNlZlcnNpb24gMC4xbWp4LWxtLXplcm8gUmVndWxhcm1qeC1sbS16ZXJvUmVndWxhcnNwYWNlAAAAAYsAAgEBAwaLDvp8DgAAAAAD6AAA) format(\"woff\")", Wr = (function() {
 	var e;
 	let t = Vr(J);
 	return e = class extends t {
@@ -10055,8 +9921,7 @@ var Ur = [
 		}
 	}, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mrow.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mrow.js
 function Gr(e) {
 	return class extends e {
 		stretchChildren() {
@@ -10177,8 +10042,7 @@ function Kr(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mrow.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mrow.js
 var qr = class extends x {
 	constructor() {
 		super(...arguments), this._core = null;
@@ -10252,8 +10116,7 @@ var Jr = class extends qr {
 	}
 };
 Jr.defaults = qr.defaults;
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mrow.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mrow.js
 var Yr = (function() {
 	var e;
 	let t = Gr(J);
@@ -10319,8 +10182,7 @@ var Yr = (function() {
 	let t = Kr(Yr);
 	return e = class extends t {}, e.kind = Jr.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mi.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mi.js
 function Zr(e) {
 	return class extends e {
 		computeBBox(e, t = !1) {
@@ -10328,8 +10190,7 @@ function Zr(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mi.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mi.js
 var Qr = class e extends S {
 	constructor() {
 		super(...arguments), this.texclass = b.ORD;
@@ -10347,8 +10208,7 @@ var Qr = class e extends S {
 	}
 };
 Qr.defaults = Object.assign({}, S.defaults), Qr.operatorName = /^[a-z][a-z0-9]*$/i, Qr.singleCharacter = /^[\uD800-\uDBFF]?.[\u0300-\u036F\u1AB0-\u1ABE\u1DC0-\u1DFF\u20D0-\u20EF]*$/;
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mi.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mi.js
 var $r = (function() {
 	var e;
 	let t = Zr(J);
@@ -10362,8 +10222,7 @@ var $r = (function() {
 	}
 };
 ei.OPTIONS = Object.assign(Object.assign({}, G.OPTIONS), { dynamicPrefix: "./svg/dynamic" }), ei.JAX = "SVG";
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mo.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mo.js
 function ti(e) {
 	return class extends e {
 		get breakCount() {
@@ -10492,15 +10351,7 @@ function ti(e) {
 			return this.stretch = n && n.dir === e ? n : wr, this.stretch.dir !== H.None;
 		}
 		getVariant() {
-			if (this.node.attributes.get("largeop")) {
-				this.variant = this.node.attributes.get("displaystyle") ? "-largeop" : "-smallop";
-				return;
-			}
-			if (!this.node.attributes.hasExplicit("mathvariant") && this.node.getProperty("pseudoscript") === !1) {
-				this.variant = "-tex-variant";
-				return;
-			}
-			super.getVariant();
+			this.node.attributes.get("largeop") ? this.variant = this.node.attributes.get("displaystyle") ? "-largeop" : "-smallop" : !this.node.attributes.hasExplicit("mathvariant") && this.node.getProperty("pseudoscript") === !1 ? this.variant = "-tex-variant" : super.getVariant();
 		}
 		remapChars(e) {
 			let t = this.node.getProperty("primes");
@@ -10513,8 +10364,7 @@ function ti(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mo.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mo.js
 var ni = (function() {
 	var e;
 	let t = ti(J);
@@ -10650,8 +10500,7 @@ var ni = (function() {
 		}
 	}, e.kind = E.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mn.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mn.js
 function ri(e) {
 	return class extends e {
 		remapChars(e) {
@@ -10666,8 +10515,7 @@ function ri(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mn.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mn.js
 var ii = class extends S {
 	constructor() {
 		super(...arguments), this.texclass = b.ORD;
@@ -10677,15 +10525,13 @@ var ii = class extends S {
 	}
 };
 ii.defaults = Object.assign({}, S.defaults);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mn.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mn.js
 var ai = (function() {
 	var e;
 	let t = ri(J);
 	return e = class extends t {}, e.kind = ii.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/ms.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/ms.js
 function oi(e) {
 	return class extends e {
 		createText(e) {
@@ -10699,8 +10545,7 @@ function oi(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/ms.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/ms.js
 var si = class extends S {
 	constructor() {
 		super(...arguments), this.texclass = b.ORD;
@@ -10713,15 +10558,13 @@ si.defaults = Object.assign(Object.assign({}, S.defaults), {
 	lquote: "\"",
 	rquote: "\""
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/ms.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/ms.js
 var ci = (function() {
 	var e;
 	let t = oi(J);
 	return e = class extends t {}, e.kind = si.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mtext.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mtext.js
 function li(e) {
 	var t = class extends e {
 		constructor() {
@@ -10743,9 +10586,7 @@ function li(e) {
 			if (t.mtextFamily || e.mtextFont || n) {
 				let r = this.node.attributes.get("mathvariant"), i = this.constructor.INHERITFONTS[r] || this.jax.font.getCssFont(r), a = i[0] || (n ? t.merrorFamily || e.merrorFont : t.mtextFamily || e.mtextFont);
 				this.variant = this.explicitVariant(a, i[2] ? "bold" : "", i[1] ? "italic" : "");
-				return;
-			}
-			super.getVariant();
+			} else super.getVariant();
 		}
 		setBreakAt(e) {
 			this.breakPoints.push(e);
@@ -10755,11 +10596,11 @@ function li(e) {
 		}
 		computeLineBBox(e) {
 			let t = q.from(this.getOuterBBox(), this.linebreakOptions.lineleading);
-			return this.breakCount ? (t.w = this.getBreakWidth(e), e === 0 ? (t.R = 0, this.addLeftBorders(t)) : (t.L = 0, t.indentData = [
+			return this.breakCount && (t.w = this.getBreakWidth(e), e === 0 ? (t.R = 0, this.addLeftBorders(t)) : (t.L = 0, t.indentData = [
 				["left", "0"],
 				["left", "0"],
 				["left", "0"]
-			], e === this.breakCount && this.addRightBorders(t)), t) : t;
+			], e === this.breakCount && this.addRightBorders(t))), t;
 		}
 		getBreakWidth(e) {
 			let t = this.childNodes, [n, r] = this.breakPoints[e - 1] || [0, 0], [i, a] = this.breakPoints[e] || [t.length, 0], o = t[n].node.getText().split(/ /);
@@ -10792,8 +10633,7 @@ function li(e) {
 		]
 	}, t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mtext.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mtext.js
 var ui = class e extends S {
 	constructor() {
 		super(...arguments), this.texclass = b.ORD;
@@ -10810,8 +10650,7 @@ ui.NONSPACELIKE = [
 	"mathbackground",
 	"background"
 ], ui.defaults = Object.assign({}, S.defaults);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mtext.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mtext.js
 var di = (function() {
 	var e;
 	let t = li(J);
@@ -10853,8 +10692,7 @@ var di = (function() {
 	}
 };
 fi.defaults = Object.assign({}, x.defaults);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/merror.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/merror.js
 var pi = (function() {
 	var e = class extends J {
 		toSVG(e) {
@@ -10880,8 +10718,7 @@ var pi = (function() {
 		}
 	}, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mspace.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mspace.js
 function mi(e) {
 	return class extends e {
 		get canBreak() {
@@ -10906,8 +10743,7 @@ function mi(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mspace.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mspace.js
 var hi = class e extends S {
 	constructor() {
 		super(...arguments), this.texclass = b.NONE;
@@ -10951,15 +10787,13 @@ hi.NONSPACELIKE = [
 	indentalignlast: "indentalign",
 	indentshiftlast: "indentshift"
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mspace.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mspace.js
 var gi = (function() {
 	var e;
 	let t = mi(J);
 	return e = class extends t {}, e.kind = hi.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mpadded.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mpadded.js
 function _i(e) {
 	return class extends e {
 		get containerWidth() {
@@ -11006,8 +10840,7 @@ function _i(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mpadded.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mpadded.js
 var vi = class extends at {
 	get kind() {
 		return "mpadded";
@@ -11026,8 +10859,7 @@ vi.defaults = Object.assign(Object.assign({}, at.defaults), {
 	lspace: 0,
 	voffset: 0
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mpadded.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mpadded.js
 var yi = (function() {
 	var e;
 	let t = _i(J);
@@ -11047,8 +10879,7 @@ var yi = (function() {
 	}
 };
 bi.defaults = Object.assign({}, at.defaults);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mphantom.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mphantom.js
 var xi = (function() {
 	var e = class extends J {
 		toSVG(e) {
@@ -11057,8 +10888,7 @@ var xi = (function() {
 	};
 	return e.kind = bi.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mfrac.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mfrac.js
 function Si(e) {
 	return class extends e {
 		getFractionBBox(e, t, n) {
@@ -11135,8 +10965,7 @@ function Si(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mfrac.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mfrac.js
 var Ci = class extends C {
 	get kind() {
 		return "mfrac";
@@ -11181,8 +11010,7 @@ Ci.defaults = Object.assign(Object.assign({}, C.defaults), {
 	denomalign: "center",
 	bevelled: !1
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mfrac.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mfrac.js
 var wi = (function() {
 	var e;
 	let t = Si(J);
@@ -11216,8 +11044,7 @@ var wi = (function() {
 		}
 	}, e.kind = Ci.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/msqrt.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/msqrt.js
 function Ti(e) {
 	return class extends e {
 		get base() {
@@ -11259,8 +11086,7 @@ function Ti(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/msqrt.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/msqrt.js
 var Ei = class extends x {
 	constructor() {
 		super(...arguments), this.texclass = b.ORD;
@@ -11282,8 +11108,7 @@ var Ei = class extends x {
 	}
 };
 Ei.defaults = Object.assign(Object.assign({}, x.defaults), { "data-vertical-align": "bottom" });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/msqrt.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/msqrt.js
 var Di = (function() {
 	var e;
 	let t = Ti(J);
@@ -11307,8 +11132,7 @@ var Di = (function() {
 		}
 	}, e.kind = Ei.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mroot.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mroot.js
 function Oi(e) {
 	return class extends e {
 		get root() {
@@ -11336,8 +11160,7 @@ function Oi(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mroot.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mroot.js
 var ki = class extends x {
 	constructor() {
 		super(...arguments), this.texclass = b.ORD;
@@ -11359,8 +11182,7 @@ var ki = class extends x {
 	}
 };
 ki.defaults = Object.assign(Object.assign({}, x.defaults), { "data-vertical-align": "bottom" });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mroot.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mroot.js
 var Ai = (function() {
 	var e;
 	let t = Oi(Di);
@@ -11372,8 +11194,7 @@ var Ai = (function() {
 		}
 	}, e.kind = ki.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mfenced.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mfenced.js
 function ji(e) {
 	return class extends e {
 		createMrow() {
@@ -11406,8 +11227,7 @@ function ji(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mfenced.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mfenced.js
 var Mi = class extends x {
 	constructor() {
 		super(...arguments), this.texclass = b.INNER, this.separators = [], this.open = null, this.close = null;
@@ -11418,7 +11238,7 @@ var Mi = class extends x {
 	setTeXclass(e) {
 		this.getPrevClass(e), this.open && (e = this.open.setTeXclass(e)), this.childNodes[0] && (e = this.childNodes[0].setTeXclass(e));
 		for (let t = 1, n = this.childNodes.length; t < n; t++) this.separators[t - 1] && (e = this.separators[t - 1].setTeXclass(e)), this.childNodes[t] && (e = this.childNodes[t].setTeXclass(e));
-		return this.close && (e = this.close.setTeXclass(e)), (!this.open || !this.close) && this.updateTeXclass(this.open || this.childNodes[0] || this.close), e;
+		return this.close && (e = this.close.setTeXclass(e)), this.open && this.close || this.updateTeXclass(this.open || this.childNodes[0] || this.close), e;
 	}
 	setChildInheritedAttributes(e, t, n, r) {
 		this.addFakeNodes();
@@ -11450,8 +11270,7 @@ Mi.defaults = Object.assign(Object.assign({}, x.defaults), {
 	close: ")",
 	separators: ","
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mfenced.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mfenced.js
 var Ni = (function() {
 	var e;
 	let t = ji(J);
@@ -11465,8 +11284,7 @@ var Ni = (function() {
 		}
 	}, e.kind = Mi.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/msubsup.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/msubsup.js
 function Pi(e) {
 	var t = class extends e {
 		get scriptChild() {
@@ -11524,8 +11342,7 @@ function Ii(e) {
 	};
 	return t.useIC = !1, t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/scriptbase.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/scriptbase.js
 function Li(e) {
 	var t = class extends e {
 		get baseChild() {
@@ -11680,8 +11497,7 @@ function Li(e) {
 	};
 	return t.useIC = !0, t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/scriptbase.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/scriptbase.js
 var Ri = (function() {
 	var e;
 	let t = Li(J);
@@ -11741,8 +11557,7 @@ var Vi = class extends zi {
 	}
 };
 Vi.defaults = Object.assign({}, zi.defaults);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/msubsup.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/msubsup.js
 var Hi = (function() {
 	var e;
 	let t = Pi(Ri);
@@ -11768,8 +11583,7 @@ var Hi = (function() {
 		}
 	}, e.kind = zi.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/munderover.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/munderover.js
 function Gi(e) {
 	return class extends e {
 		get scriptChild() {
@@ -11850,8 +11664,7 @@ function qi(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/munderover.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/munderover.js
 var Ji = class extends C {
 	get kind() {
 		return "munderover";
@@ -11925,8 +11738,7 @@ Xi.defaults = Object.assign({}, Ji.defaults), Xi.ACCENTS = [
 	"accent",
 	"accentunder"
 ];
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/munderover.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/munderover.js
 var Zi = (function() {
 	var e;
 	let t = Gi(Hi);
@@ -12093,8 +11905,7 @@ function ta(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mmultiscripts.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mmultiscripts.js
 var na = class extends zi {
 	get kind() {
 		return "mmultiscripts";
@@ -12153,8 +11964,7 @@ var ia = class extends x {
 	}
 };
 ia.defaults = Object.assign({}, x.defaults);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mmultiscripts.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mmultiscripts.js
 function aa(e) {
 	return {
 		left: (e, t) => 0,
@@ -12185,8 +11995,7 @@ var oa = (function() {
 		}
 	}, e.kind = na.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/numeric.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/numeric.js
 function sa(e) {
 	return e.reduce((e, t) => e + t, 0);
 }
@@ -12534,8 +12343,7 @@ function la(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mtable.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mtable.js
 var ua = class extends x {
 	constructor() {
 		super(...arguments), this.properties = { useHeight: !0 }, this.texclass = b.ORD;
@@ -12606,8 +12414,7 @@ ua.defaults = Object.assign(Object.assign({}, x.defaults), {
 	minlabelspacing: "0.8em",
 	"data-break-align": "top"
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mtable.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mtable.js
 var da = "mjx-", fa = (function() {
 	var e;
 	let t = la(J);
@@ -12774,8 +12581,7 @@ var da = "mjx-", fa = (function() {
 		"g[data-mml-node=\"mtable\"] > g > svg": { overflow: "visible" }
 	}, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mtr.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mtr.js
 function pa(e) {
 	return class extends e {
 		get numCells() {
@@ -12840,8 +12646,7 @@ function ma(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mtr.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mtr.js
 var ha = class extends x {
 	get kind() {
 		return "mtr";
@@ -12863,12 +12668,11 @@ var ha = class extends x {
 		for (let o of this.childNodes) e.columnalign[1] = i.shift() || e.columnalign[1], e["data-vertical-align"] = [this.kind, a.shift() || e["data-break-align"][1]], o.setInheritedAttributes(e, t, n, r);
 	}
 	verifyChildren(e) {
-		if (this.parent && !this.parent.isKind("mtable")) {
-			this.mError(this.kind + " can only be a child of an mtable", e, !0);
-			return;
+		if (this.parent && !this.parent.isKind("mtable")) this.mError(this.kind + " can only be a child of an mtable", e, !0);
+		else {
+			for (let t of this.childNodes) t.isKind("mtd") || (this.replaceChild(this.factory.create("mtd"), t).appendChild(t), e.fixMtables || t.mError("Children of " + this.kind + " must be mtd", e));
+			super.verifyChildren(e);
 		}
-		for (let t of this.childNodes) t.isKind("mtd") || (this.replaceChild(this.factory.create("mtd"), t).appendChild(t), e.fixMtables || t.mError("Children of " + this.kind + " must be mtd", e));
-		super.verifyChildren(e);
 	}
 	setTeXclass(e) {
 		this.getPrevClass(e);
@@ -12939,8 +12743,7 @@ var ga = class extends ha {
 		}
 	}, e.kind = ga.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mtd.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mtd.js
 function ya(e) {
 	return class extends e {
 		get fixesPWidth() {
@@ -12958,8 +12761,7 @@ function ya(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mtd.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mtd.js
 var ba = class extends C {
 	get kind() {
 		return "mtd";
@@ -12974,11 +12776,7 @@ var ba = class extends C {
 		return "columnalign";
 	}
 	verifyChildren(e) {
-		if (this.parent && !this.parent.isKind("mtr")) {
-			this.mError(this.kind + " can only be a child of an mtr or mlabeledtr", e, !0);
-			return;
-		}
-		super.verifyChildren(e);
+		this.parent && !this.parent.isKind("mtr") ? this.mError(this.kind + " can only be a child of an mtr or mlabeledtr", e, !0) : super.verifyChildren(e);
 	}
 	setTeXclass(e) {
 		return this.getPrevClass(e), this.childNodes[0].setTeXclass(null), this;
@@ -12992,8 +12790,7 @@ ba.defaults = Object.assign(Object.assign({}, C.defaults), {
 	groupalign: y,
 	"data-vertical-align": "top"
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mtd.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mtd.js
 var xa = (function() {
 	var e;
 	let t = ya(J);
@@ -13044,8 +12841,7 @@ function Ca(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/maction.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/maction.js
 var wa = class extends x {
 	get kind() {
 		return "maction";
@@ -13083,19 +12879,14 @@ var wa = class extends x {
 	}
 	setChildInheritedAttributes(e, t, n, r) {
 		var i, a;
-		if (this.attributes.get("actiontype").toLowerCase() !== "tooltip") {
-			super.setChildInheritedAttributes(e, t, n, r);
-			return;
-		}
-		(i = this.childNodes[0]) == null || i.setInheritedAttributes(e, t, n, r), (a = this.childNodes[1]) == null || a.setInheritedAttributes(e, !1, 1, !1);
+		this.attributes.get("actiontype").toLowerCase() === "tooltip" ? ((i = this.childNodes[0]) == null || i.setInheritedAttributes(e, t, n, r), (a = this.childNodes[1]) == null || a.setInheritedAttributes(e, !1, 1, !1)) : super.setChildInheritedAttributes(e, t, n, r);
 	}
 };
 wa.defaults = Object.assign(Object.assign({}, x.defaults), {
 	actiontype: "toggle",
 	selection: 1
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/maction.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/maction.js
 var Ta = (function() {
 	var e;
 	let t = Ca(J);
@@ -13461,8 +13252,7 @@ var ka = ((e) => [
 		}];
 	};
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/menclose.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/menclose.js
 function Ha(e) {
 	return class extends e {
 		getParameters() {
@@ -13586,8 +13376,7 @@ function Ha(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/menclose.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/menclose.js
 var Ua = class extends x {
 	constructor() {
 		super(...arguments), this.texclass = b.ORD;
@@ -13606,8 +13395,7 @@ var Ua = class extends x {
 	}
 };
 Ua.defaults = Object.assign(Object.assign({}, x.defaults), { notation: "longdiv" });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Notation.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Notation.js
 var Wa = {
 	top: (e, t, n, r) => [
 		0,
@@ -13875,8 +13663,7 @@ var Wa = {
 		}]
 	]), e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/semantics.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/semantics.js
 function eo(e) {
 	return class extends e {
 		computeBBox(e, t = !1) {
@@ -13890,8 +13677,7 @@ function eo(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/XmlNode.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/XmlNode.js
 function to(e) {
 	class t extends e {
 		constructor(e, t, n = null) {
@@ -13970,8 +13756,7 @@ function to(e) {
 		}
 	}, t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/semantics.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/semantics.js
 var no = class extends C {
 	get kind() {
 		return "semantics";
@@ -14009,8 +13794,7 @@ var io = class extends ro {
 	}
 };
 io.defaults = Object.assign({}, ro.defaults);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/semantics.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/semantics.js
 var ao = (function() {
 	var e;
 	let t = eo(J);
@@ -14059,8 +13843,7 @@ var ao = (function() {
 		}
 	}, e.kind = ct.prototype.kind, e.styles = Object.assign({ "foreignObject[data-mjx-html]": { overflow: "visible" } }, t.styles), e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mglyph.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/mglyph.js
 function lo(e) {
 	return class extends e {
 		constructor(e, t, n = null) {
@@ -14079,8 +13862,7 @@ function lo(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mglyph.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mglyph.js
 var uo = class extends S {
 	constructor() {
 		super(...arguments), this.texclass = b.ORD;
@@ -14101,8 +13883,7 @@ uo.defaults = Object.assign(Object.assign({}, S.defaults), {
 	height: "auto",
 	valign: "0em"
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mglyph.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/mglyph.js
 var fo = (function() {
 	var e;
 	let t = lo(J);
@@ -14125,8 +13906,7 @@ var fo = (function() {
 		}
 	}, e.kind = uo.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/TeXAtom.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/TeXAtom.js
 function po(e) {
 	return class extends e {
 		computeBBox(e, t = !1) {
@@ -14134,8 +13914,7 @@ function po(e) {
 		}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/TeXAtom.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/TeXAtom.js
 var mo = class extends C {
 	get kind() {
 		return "TeXAtom";
@@ -14157,8 +13936,7 @@ var mo = class extends C {
 	}
 };
 mo.defaults = Object.assign({}, C.defaults), mo.prototype.adjustTeXclass = E.prototype.adjustTeXclass;
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/TeXAtom.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/TeXAtom.js
 var ho = (function() {
 	var e;
 	let t = po(J);
@@ -14168,8 +13946,7 @@ var ho = (function() {
 		}
 	}, e.kind = mo.prototype.kind, e;
 })();
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/TextNode.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/common/Wrappers/TextNode.js
 function go(e) {
 	return class extends e {
 		remappedText(e, t) {
@@ -14214,8 +13991,7 @@ function go(e) {
 		getSpace() {}
 	};
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/TextNode.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/Wrappers/TextNode.js
 var _o = (function() {
 	var e;
 	let t = go(J);
@@ -14263,10 +14039,7 @@ var _o = (function() {
 		return `HTML=<${e}>...</${e}>`;
 	}
 	verifyTree(e) {
-		if (this.parent && !this.parent.isToken) {
-			this.mError("HTML can only be a child of a token element", e, !0);
-			return;
-		}
+		this.parent && !this.parent.isToken && this.mError("HTML can only be a child of a token element", e, !0);
 	}
 }, yo = (function() {
 	var e = class extends co {};
@@ -14312,8 +14085,7 @@ var _o = (function() {
 	[J.kind]: J
 }, xo = class extends Pr {};
 xo.defaultNodes = bo;
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/FontCache.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/output/svg/FontCache.js
 var So = class {
 	constructor(e) {
 		this.cache = /* @__PURE__ */ new Map(), this.defs = null, this.localID = "", this.nextID = 0, this.jax = e;
@@ -14338,8 +14110,7 @@ var So = class {
 		return this.defs;
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/common.js
+// node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/common.js
 function Co(e) {
 	var t = class extends e {};
 	return t.defaultVariants = [
@@ -14448,8 +14219,7 @@ function Co(e) {
 		"-rt-bt"
 	], t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/delimiters.js
+// node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/delimiters.js
 var wo = {
 	40: {
 		dir: U,
@@ -20899,8 +20669,7 @@ Eo.NAME = "MathJaxNewcm", Eo.OPTIONS = Object.assign(Object.assign({}, To.OPTION
 	script: "S",
 	"bold-script": "SB"
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/default.js
+// node_modules/.pnpm/@mathjax+mathjax-newcm-font@4.1.3/node_modules/@mathjax/mathjax-newcm-font/mjs/svg/default.js
 var Do = {
 	fontName: "mathjax-newcm",
 	DefaultFont: Eo
@@ -21087,14 +20856,13 @@ jo.NAME = "SVG", jo.OPTIONS = Object.assign(Object.assign({}, Mr.OPTIONS), {
 		fill: "blue",
 		stroke: "blue"
 	},
-	[["rect[data-sre-highlighter-added]:has(+ .mjx-selected)", "rect[data-sre-highlighter-bbox].mjx-selected"].join(", ")]: {
+	"rect[data-sre-highlighter-added]:has(+ .mjx-selected), rect[data-sre-highlighter-bbox].mjx-selected": {
 		stroke: "black",
 		"stroke-width": "80px"
 	},
-	"@media (prefers-color-scheme: dark)": { [["rect[data-sre-highlighter-added]:has(+ .mjx-selected)", "rect[data-sre-highlighter-bbox].mjx-selected"].join(", ")]: { stroke: "#C8C8C8" } }
+	"@media (prefers-color-scheme: dark)": { "rect[data-sre-highlighter-added]:has(+ .mjx-selected), rect[data-sre-highlighter-bbox].mjx-selected": { stroke: "#C8C8C8" } }
 }), jo.FONTCACHEID = "MJX-SVG-global-cache", jo.STYLESHEETID = "MJX-SVG-styles";
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/DOMAdaptor.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/DOMAdaptor.js
 var Mo = class {
 	constructor(e = null) {
 		this.canMeasureNodes = !0, this.document = e;
@@ -21217,28 +20985,9 @@ function Fo(e, t = {}) {
 		cjkCharWidth: 1,
 		unknownCharWidth: .6,
 		unknownCharHeight: .8
-	} : {}), n.cjkPattern = new RegExp([
-		"[",
-		"ᄀ-ᅟ",
-		"〈〉",
-		"⺀-〾",
-		"぀-㉇",
-		"㉐-䶿",
-		"一-꓆",
-		"ꥠ-ꥼ",
-		"가-힣",
-		"豈-﫿",
-		"︐-︙",
-		"︰-﹫",
-		"！-｠￠-￦",
-		"𛀀-𛀁",
-		"🈀-🉑",
-		"𠀀-𿿽",
-		"]"
-	].join(""), "gu"), n;
+	} : {}), n.cjkPattern = /* @__PURE__ */ RegExp("[ᄀ-ᅟ〈〉⺀-〾぀-㉇㉐-䶿一-꓆ꥠ-ꥼ가-힣豈-﫿︐-︙︰-﹫！-｠￠-￦𛀀-𛀁🈀-🉑𠀀-𿿽]", "gu"), n;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/adaptors/lite/Element.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/adaptors/lite/Element.js
 var Io = class {
 	constructor(e, t = {}, n = []) {
 		this.kind = e, this.attributes = Object.assign({}, t), this.children = [...n];
@@ -21412,8 +21161,7 @@ Zo.SELF_CLOSING = {
 	math: "http://www.w3.org/1998/Math/MathML",
 	html: "http://www.w3.org/1999/xhtml"
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/adaptors/lite/Window.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/adaptors/lite/Window.js
 var Qo = class {
 	constructor() {
 		this.DOMParser = Zo, this.NodeList = Bo, this.HTMLCollection = Bo, this.HTMLElement = Io, this.DocumentFragment = Bo, this.Document = Lo, this.document = new Lo(this);
@@ -21702,8 +21450,7 @@ var Qo = class {
 function ns(e = null) {
 	return new ts(null, e);
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/LinkedList.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/LinkedList.js
 var rs = Symbol(), is = class {
 	constructor(e = null) {
 		this.next = null, this.prev = null, this.data = e;
@@ -21817,8 +21564,7 @@ cs.defaults = Object.assign(Object.assign({}, at.defaults), {
 	dir: y,
 	infixlinebreakstyle: "before"
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/maligngroup.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/maligngroup.js
 var ls = class extends at {
 	get kind() {
 		return "maligngroup";
@@ -21831,8 +21577,7 @@ var ls = class extends at {
 	}
 };
 ls.defaults = Object.assign(Object.assign({}, at.defaults), { groupalign: y });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/malignmark.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/malignmark.js
 var us = class extends x {
 	get kind() {
 		return "malignmark";
@@ -21845,8 +21590,7 @@ var us = class extends x {
 	}
 };
 us.defaults = Object.assign(Object.assign({}, x.defaults), { edge: "left" });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mathchoice.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MmlNodes/mathchoice.js
 var ds = class extends C {
 	get kind() {
 		return "MathChoice";
@@ -21863,8 +21607,7 @@ var ds = class extends C {
 	}
 };
 ds.defaults = Object.assign({}, C.defaults);
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MML.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MmlTree/MML.js
 var fs = {
 	[Hr.prototype.kind]: Hr,
 	[Qr.prototype.kind]: Qr,
@@ -21915,8 +21658,7 @@ var fs = {
 	}
 };
 ps.defaultNodes = fs;
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/BitField.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/util/BitField.js
 var ms = class e {
 	constructor() {
 		this.bits = 0;
@@ -21954,8 +21696,7 @@ function hs(...e) {
 	let t = class extends ms {};
 	return t.allocate(...e), t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MathDocument.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/MathDocument.js
 var gs = function(e, t, n, r) {
 	function i(e) {
 		return e instanceof n ? e : new n(function(t) {
@@ -22254,8 +21995,7 @@ ws.KIND = "MathDocument", ws.OPTIONS = {
 		]
 	})
 }, ws.ProcessBits = hs("findMath", "compile", "getMetrics", "typeset", "updateDocument");
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/Handler.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/core/Handler.js
 var Ts = class extends ws {}, Es = class {
 	constructor(e, t = 5) {
 		this.documentClass = Ts, this.adaptor = e, this.priority = t;
@@ -22271,8 +22011,7 @@ var Ts = class extends ws {}, Es = class {
 	}
 };
 Es.NAME = "generic";
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/handlers/html/HTMLMathItem.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/handlers/html/HTMLMathItem.js
 var Ds = class extends Je {
 	get adaptor() {
 		return this.inputJax.adaptor;
@@ -22369,8 +22108,7 @@ var Ds = class extends Je {
 		return this.init(), i;
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/handlers/html/HTMLDocument.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/handlers/html/HTMLDocument.js
 ks.OPTIONS = {
 	skipHtmlTags: [
 		"script",
@@ -22496,8 +22234,7 @@ As.KIND = "HTML", As.OPTIONS = Object.assign(Object.assign({}, ws.OPTIONS), {
 	MathItem: Ds,
 	DomStrings: null
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/handlers/html/HTMLHandler.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/handlers/html/HTMLHandler.js
 var js = class extends Es {
 	constructor() {
 		super(...arguments), this.documentClass = As;
@@ -22519,14 +22256,12 @@ var js = class extends Es {
 		return super.create(e, t);
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/handlers/html.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/handlers/html.js
 function Ms(e) {
 	let t = new js(e);
 	return we.handlers.register(t), t;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/ams/AmsItems.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/ams/AmsItems.js
 var Ns = class extends Zn {
 	constructor(e, ...t) {
 		super(e), this.factory.configuration.tags.start("multline", !0, t[0]);
@@ -22665,8 +22400,7 @@ var Fs = -100, X = {
 		n.remove(t), e.configuration.handlers.get(A.DELIMITER).applicable(t) && n.add(t, new Jt(t, null, {})), delete e.stack.env.isGlobal;
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/ams/AmsMethods.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/ams/AmsMethods.js
 function Is(e) {
 	if (!e || e.isInferred && e.childNodes.length === 0) return [null, null];
 	if (e.isKind("msubsup") && Ls(e)) return [e, null];
@@ -23412,8 +23146,7 @@ new en("AMSmath-mathchar0mo", B.mathchar0mo, { iiiint: ["⨌", { texClass: b.OP 
 	implies: [Z.Macro, "\\;\\Longrightarrow\\;"],
 	impliedby: [Z.Macro, "\\;\\Longleftarrow\\;"]
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/newcommand/NewcommandItems.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/newcommand/NewcommandItems.js
 var Rs = class extends N {
 	get kind() {
 		return "beginEnv";
@@ -23479,11 +23212,7 @@ var Rs = class extends N {
 		}
 		e.i++;
 		let a = i.get(A.DELIMITER).lookup(r);
-		if (a) {
-			X.addDelimiter(e, "\\" + n, a.char, a.attributes);
-			return;
-		}
-		X.addMacro(e, n, zs.Macro, [r]);
+		a ? X.addDelimiter(e, "\\" + n, a.char, a.attributes) : X.addMacro(e, n, zs.Macro, [r]);
 	},
 	MacroWithTemplate(e, t, n, r, ...i) {
 		let a = parseInt(r, 10);
@@ -23519,8 +23248,7 @@ var Rs = class extends N {
 	},
 	Macro: z.Macro
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/newcommand/NewcommandMappings.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/newcommand/NewcommandMappings.js
 new rn("Newcommand-macros", {
 	newcommand: zs.NewCommand,
 	renewcommand: zs.NewCommand,
@@ -23529,8 +23257,7 @@ new rn("Newcommand-macros", {
 	def: zs.MacroDef,
 	let: zs.Let
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/newcommand/NewcommandConfiguration.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/newcommand/NewcommandConfiguration.js
 function Bs(e, t) {
 	t.parseOptions.packageData.has("newcommand") || (t.parseOptions.packageData.set("newcommand", {}), new tn(Y.NEW_DELIMITER, B.delimiter, {}), new rn(Y.NEW_COMMAND, {}), new an(Y.NEW_ENVIRONMENT, B.environment, {}), t.parseOptions.handlers.add({
 		[A.CHARACTER]: [],
@@ -23548,8 +23275,7 @@ un.create("newcommand", {
 	},
 	[k.CONFIG]: Bs
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/ams/AmsConfiguration.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/ams/AmsConfiguration.js
 var Vs = class extends Wt {};
 un.create("ams", {
 	[k.HANDLER]: {
@@ -23581,8 +23307,7 @@ un.create("ams", {
 	},
 	[k.CONFIG]: Bs
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/boldsymbol/BoldsymbolConfiguration.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/boldsymbol/BoldsymbolConfiguration.js
 var Hs = {};
 Hs[O.Variant.NORMAL] = O.Variant.BOLD, Hs[O.Variant.ITALIC] = O.Variant.BOLDITALIC, Hs[O.Variant.FRAKTUR] = O.Variant.BOLDFRAKTUR, Hs[O.Variant.SCRIPT] = O.Variant.BOLDSCRIPT, Hs[O.Variant.SANSSERIF] = O.Variant.BOLDSANSSERIF, Hs["-tex-calligraphic"] = "-tex-bold-calligraphic", Hs["-tex-oldstyle"] = "-tex-bold-oldstyle", Hs["-tex-mathit"] = O.Variant.BOLDITALIC, new rn("boldsymbol", { boldsymbol: { Boldsymbol(e, t) {
 	let n = e.stack.env.boldsymbol;
@@ -23605,8 +23330,7 @@ un.create("boldsymbol", {
 	[k.NODES]: { token: Us },
 	[k.POSTPROCESSORS]: [Ws]
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/mathtools/MathtoolsUtil.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/mathtools/MathtoolsUtil.js
 var Q = {
 	setDisplayLevel(e, t) {
 		if (!t) return;
@@ -23932,12 +23656,11 @@ var Q = {
 		let n = e.tags;
 		if (!("mtFormats" in n)) throw new M("TagsNotMT", "%1 can only be used with ams or mathtools tags", t);
 		let r = e.GetArgument(t).trim();
-		if (!r) {
-			n.mtCurrent = null, e.Push(e.itemFactory.create("null"));
-			return;
+		if (!r) n.mtCurrent = null, e.Push(e.itemFactory.create("null"));
+		else {
+			if (!n.mtFormats.has(r)) throw new M("UndefinedTagForm", "Undefined tag form: %1", r);
+			n.mtCurrent = n.mtFormats.get(r), e.Push(e.itemFactory.create("null"));
 		}
-		if (!n.mtFormats.has(r)) throw new M("UndefinedTagForm", "Undefined tag form: %1", r);
-		n.mtCurrent = n.mtFormats.get(r), e.Push(e.itemFactory.create("null"));
 	},
 	SetOptions(e, t) {
 		let n = e.options.mathtools;
@@ -24434,8 +24157,7 @@ new rn("mathtools-macros", {
 	"\\lparen": "(",
 	"\\rparen": ")"
 }), new rn("mathtools-characters", { ":": [$.CenterColon, !0] });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/mathtools/MathtoolsTags.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/mathtools/MathtoolsTags.js
 var qs = 0;
 function Js(e, t) {
 	let n = t.parseOptions.options.tags;
@@ -24466,8 +24188,7 @@ function Js(e, t) {
 	let a = "MathtoolsTags-" + qs;
 	qt.add(a, i), t.parseOptions.options.tags = a;
 }
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/mathtools/MathtoolsItems.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/mathtools/MathtoolsItems.js
 var Ys = class extends Ns {
 	get kind() {
 		return "multlined";
@@ -24487,8 +24208,7 @@ var Ys = class extends Ns {
 		super.EndTable.call(this);
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/mathtools/MathtoolsConfiguration.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/mathtools/MathtoolsConfiguration.js
 function Xs(e, t) {
 	Bs(e, t);
 	let n = t.parseOptions, r = n.options.mathtools.pairedDelimiters, i = e.handlers.retrieve(Y.NEW_COMMAND);
@@ -24536,8 +24256,7 @@ un.create("mathtools", {
 		tagforms: ke({})
 	} }
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/empheq/EmpheqUtil.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/empheq/EmpheqUtil.js
 var Qs = {
 	splitOptions(e, t = null) {
 		return F.keyvalOptions(e, t, !0);
@@ -24678,8 +24397,7 @@ new an("cases-env", tc.environment, {
 	[k.ITEMS]: { [$s.prototype.kind]: $s },
 	[k.TAGS]: { cases: ec }
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/enclose/EncloseConfiguration.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/enclose/EncloseConfiguration.js
 var nc = {
 	"data-arrowhead": 1,
 	color: 1,
@@ -24693,8 +24411,7 @@ new rn("enclose", { enclose: { Enclose(e, t) {
 	let n = e.GetArgument(t).replace(/,/g, " "), r = e.GetBrackets(t, ""), i = e.ParseArg(t), a = F.keyvalOptions(r, nc);
 	a.notation = n, e.Push(e.create("node", "menclose", [i], a));
 } }.Enclose }), un.create("enclose", { [k.HANDLER]: { [A.MACRO]: ["enclose"] } });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/cancel/CancelConfiguration.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/cancel/CancelConfiguration.js
 var rc = {
 	Cancel(e, t, n) {
 		let r = e.GetBrackets(t, ""), i = e.ParseArg(t), a = F.keyvalOptions(r, nc);
@@ -24719,8 +24436,7 @@ new rn("cancel", {
 	xcancel: [rc.Cancel, O.Notation.UPDIAGONALSTRIKE + " " + O.Notation.DOWNDIAGONALSTRIKE],
 	cancelto: rc.CancelTo
 }), un.create("cancel", { [k.HANDLER]: { [A.MACRO]: ["cancel"] } });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/color/ColorMethods.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/color/ColorMethods.js
 function ic(e) {
 	let t = `+${e}`, n = e.replace(/^.*?([a-z]*)$/, "$1");
 	return {
@@ -24853,8 +24569,7 @@ var ac = {
 		this.userColors.set(t, r);
 	}
 };
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/color/ColorConfiguration.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/color/ColorConfiguration.js
 sc.set("rgb", function(e) {
 	let t = e.trim().split(/\s*,\s*/), n = "#";
 	if (t.length !== 3) throw new M("ModelArg1", "Color values for the %1 model require 3 numbers", "rgb");
@@ -24901,8 +24616,7 @@ un.create("color", {
 	} },
 	[k.CONFIG]: lc
 });
-//#endregion
-//#region node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/braket/BraketItems.js
+// node_modules/.pnpm/@mathjax+src@4.1.3/node_modules/@mathjax/src/mjs/input/tex/braket/BraketItems.js
 var uc = R(L.thinmathspace), dc = class extends N {
 	constructor() {
 		super(...arguments), this.barNodes = [];
@@ -25048,8 +24762,7 @@ new rn("Braket-macros", {
 	[k.ITEMS]: { [dc.prototype.kind]: dc },
 	[k.PRIORITY]: 3
 });
-//#endregion
-//#region vendor/mathjax.ts
+// vendor/mathjax.ts
 var pc = ns();
 Ms(pc);
 var mc = we.document("", {
@@ -25084,5 +24797,4 @@ async function gc(e, t) {
 	let n = await mc.convertPromise(e, { display: !0 });
 	return pc.serializeXML(pc.firstChild(n));
 }
-//#endregion
 export { gc as tex2svg };
