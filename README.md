@@ -152,10 +152,10 @@ pnpm exec claude plugin test .    # hooks through the engine (tests/engine/*.tes
 ```
 
 Claude Code loads `hooks/` as TypeScript source, so only third-party code is built. `pnpm build`
-bundles MathJax and `@noble/hashes` with Vite into `hooks/vendor/`, which is committed so the
-repository stays installable as is. A hooks module imports no file over 1 MiB and cannot import
-modules at run time, so the build splits the bundle into chunks and writes each of the font's
-glyph ranges as JSON, which the plugin reads the first time a formula uses it.
+bundles MathJax, `@noble/hashes` and pele with Vite into `hooks/vendor/`, which is committed so
+the repository stays installable as is. A hooks module imports no file over 1 MiB and cannot
+import modules at run time, so the build splits the bundle into chunks and writes each of the
+font's glyph ranges as JSON, which the plugin reads the first time a formula uses it.
 
 The engine refuses a module that passes `$` across an import, so `hooks/register.tsx` wraps what
 the plugin needs from `$` in an `Io` object (`hooks/io.ts`), and every other module takes that.
@@ -163,5 +163,6 @@ the plugin needs from `$` in an `Io` object (`hooks/io.ts`), and every other mod
 ## License
 
 Apache-2.0. `hooks/vendor/` is built from [MathJax](https://github.com/mathjax/MathJax-src) and its
-[New Computer Modern font](https://github.com/mathjax/MathJax-fonts), both Apache-2.0, and
-[`@noble/hashes`](https://github.com/paulmillr/noble-hashes), MIT.
+[New Computer Modern font](https://github.com/mathjax/MathJax-fonts), both Apache-2.0, and from
+[`@noble/hashes`](https://github.com/paulmillr/noble-hashes) and
+[pele](https://github.com/obsidianmd/pele), both MIT.
