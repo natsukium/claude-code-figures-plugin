@@ -26,8 +26,10 @@ export class Pipeline {
     this.#registry = registry
   }
 
+  // The renderers are part of the key, so changing the renderers option draws
+  // a cached block again with the newly preferred one.
   code(io: Io, request: CodeRequest): Promise<Outcome> {
-    const key = cacheKey(request)
+    const key = cacheKey({ ...request, renderers: this.#registry.chain(request.lang).map((r) => r.id) })
     return this.#code.get(key, () => settle(this.#renderCode(io, request, key)))
   }
 

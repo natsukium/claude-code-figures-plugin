@@ -136,3 +136,16 @@ test('the same request renders once', async () => {
 
   expect(renders).toBe(1)
 })
+
+test('the same block under another renderer order is cached apart', async () => {
+  const svg = async () => ({ kind: 'svg' as const, svg: '<svg/>' })
+  const [a, b] = [fake('a', svg), fake('b', svg)]
+  const { io } = fakeIo()
+  const path = async (order: string[]) => {
+    const outcome = await new Pipeline(createRegistry(order, [a, b])).code(io, request)
+    return 'path' in outcome ? outcome.path : undefined
+  }
+
+  expect(await path(['a', 'b'])).not.toBe(await path(['b', 'a']))
+  expect(await path(['a', 'b'])).toBe(await path(['a', 'b']))
+})
