@@ -44,16 +44,17 @@ Claude Code 2.1.288 or later, with mods (function-hook plugins) enabled, in a te
 kitty-graphics capable; see [Terminal support](#terminal-support). Each kind of picture also needs
 programs on `PATH`:
 
-| Picture                    | Needs                                                                                                                                                                        |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mermaid`                  | [`mmdr`](https://github.com/1jehuang/mermaid-rs-renderer) or [`mmdc`](https://github.com/mermaid-js/mermaid-cli); [`resvg`](https://github.com/linebender/resvg) recommended |
-| `dot`, `graphviz`          | Graphviz's `dot` and `resvg`                                                                                                                                                 |
-| `d2`                       | [`d2`](https://d2lang.com) and `resvg`                                                                                                                                       |
-| `svg`, math                | `resvg`                                                                                                                                                                      |
-| Tool images other than PNG | `magick` (ImageMagick) or `sips` (built into macOS)                                                                                                                          |
+| Picture                    | Needs                                                                                                                                                                                                                           |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mermaid`                  | [`mmdr`](https://github.com/1jehuang/mermaid-rs-renderer), [`mmdc`](https://github.com/mermaid-js/mermaid-cli), or [`resvg`](https://github.com/linebender/resvg) for the bundled [pele](https://pele.run); `resvg` recommended |
+| `dot`, `graphviz`          | Graphviz's `dot` and `resvg`                                                                                                                                                                                                    |
+| `d2`                       | [`d2`](https://d2lang.com) and `resvg`                                                                                                                                                                                          |
+| `svg`, math                | `resvg`                                                                                                                                                                                                                         |
+| Tool images other than PNG | `magick` (ImageMagick) or `sips` (built into macOS)                                                                                                                                                                             |
 
 - mmdr is tried first, since it renders in milliseconds where mmdc starts a headless browser. mmdc
-  runs mermaid.js itself, so a block mmdr fails on is handed to it when it is installed.
+  runs mermaid.js itself, so a block mmdr fails on is handed to it when it is installed. The
+  bundled pele comes last and needs only resvg; set `renderers` to `pele` to prefer it.
 - Without resvg, mmdr writes its PNG at 1x, which looks soft on a high-density display; with it,
   the diagram is rendered to SVG and rasterized at the `scale` option.
 - MathJax 4 and every glyph range of its New Computer Modern font are bundled, and run inside
@@ -74,23 +75,23 @@ Install mmdr with `cargo install mermaid-rs-renderer`.
 
 Set these with `/config` or `claude plugin configure figures`.
 
-| Option                | Default       | Meaning                                                                                                                                                                           |
-| --------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `theme`               | `auto`        | `auto` follows Claude Code's theme; or `dark`, `default`, `forest`, `neutral`, `modern` (mmdr only; mmdc draws it as `default`). Math is drawn light on `dark` and dark otherwise |
-| `background`          | `transparent` | Diagram background; `transparent` lets the terminal's background show through                                                                                                     |
-| `scale`               | `2`           | Pixel density of the picture; above 1 needs resvg                                                                                                                                 |
-| `cell_width_px`       | `8`           | Assumed width of one terminal cell, in the pixels diagrams are laid out in                                                                                                        |
-| `cell_aspect`         | `2.1`         | Assumed height-to-width ratio of one terminal cell                                                                                                                                |
-| `max_columns`         | `120`         | Widest a picture may be, in cells; it is also kept inside the terminal                                                                                                            |
-| `max_rows`            | `30`          | Tallest a picture may be before it is grown for legibility, in cells                                                                                                              |
-| `renderers`           | (empty)       | Renderer ids in preference order, comma-separated; see below                                                                                                                      |
-| `tool_images`         | `true`        | Draw images found in tool results                                                                                                                                                 |
-| `tool_image_max_rows` | `12`          | Tallest a tool-result thumbnail may be, in cells                                                                                                                                  |
+| Option                | Default       | Meaning                                                                                                                                                                                     |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `theme`               | `auto`        | `auto` follows Claude Code's theme; or `dark`, `default`, `forest`, `neutral`, `modern` (mmdr only; mmdc draws it as `default`). pele and math are drawn light on `dark` and dark otherwise |
+| `background`          | `transparent` | Diagram background; `transparent` lets the terminal's background show through                                                                                                               |
+| `scale`               | `2`           | Pixel density of the picture; above 1 needs resvg                                                                                                                                           |
+| `cell_width_px`       | `8`           | Assumed width of one terminal cell, in the pixels diagrams are laid out in                                                                                                                  |
+| `cell_aspect`         | `2.1`         | Assumed height-to-width ratio of one terminal cell                                                                                                                                          |
+| `max_columns`         | `120`         | Widest a picture may be, in cells; it is also kept inside the terminal                                                                                                                      |
+| `max_rows`            | `30`          | Tallest a picture may be before it is grown for legibility, in cells                                                                                                                        |
+| `renderers`           | (empty)       | Renderer ids in preference order, comma-separated; see below                                                                                                                                |
+| `tool_images`         | `true`        | Draw images found in tool results                                                                                                                                                           |
+| `tool_image_max_rows` | `12`          | Tallest a tool-result thumbnail may be, in cells                                                                                                                                            |
 
-`renderers` picks and orders the programs that draw each language. The ids are `mmdr` and `mmdc`
-(mermaid), `dot`, `d2`, `svg`, and `mathjax`. A language with any of its renderers listed uses only
-those, in the listed order; the others keep the default. So `mmdc` draws mermaid with mmdc alone,
-and `mmdc,mmdr` tries mmdc first. An id no renderer has is reported when a session starts.
+`renderers` picks and orders the programs that draw each language. The ids are `mmdr`, `mmdc`, and
+`pele` (mermaid), `dot`, `d2`, `svg`, and `mathjax`. A language with any of its renderers listed
+uses only those, in the listed order; the others keep the default. So `mmdc` draws mermaid with
+mmdc alone, and `mmdc,mmdr` tries mmdc first. An id no renderer has is reported when a session starts.
 
 ## Terminal support
 
@@ -121,6 +122,12 @@ line in the debug log.
 - mmdr parses Mermaid on its own and does not match mermaid.js in every case. For example, a chained
   edge with labels (`A --> B -->|ok| C`) is misparsed; write one edge per line. Such a block renders
   without an error, so it is not handed to mmdc; set `renderers` to `mmdc` to avoid mmdr.
+- pele also parses Mermaid on its own, and lays text out by Arial's widths; resvg draws it in the
+  system's sans-serif font, so with a wider one, such as DejaVu Sans, labels fill their boxes
+  tightly.
+- pele masks lines behind edge labels with the background color. With `background` left
+  `transparent`, it assumes `#1e1e1e` on `dark` and `#ffffff` otherwise, so on a terminal of
+  another color those masks show as boxes; set `background` to the terminal's color to hide them.
 - Text in a script the math font lacks, such as `\text{日本語}`, is drawn by resvg with a system
   font.
 - The `/figures` pane shares the screen with the prompt, so in a short terminal it has only a few

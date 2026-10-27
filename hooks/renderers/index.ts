@@ -4,11 +4,12 @@ import { graphviz } from './graphviz.ts'
 import { mathjax } from './mathjax.ts'
 import { mmdc } from './mmdc.ts'
 import { mmdr } from './mmdr.ts'
+import { pele } from './pele.ts'
 import { svg } from './svg.ts'
 import type { Renderer } from './types.ts'
 
 /** Every renderer, each lang's in default preference order. */
-export const RENDERERS: readonly Renderer[] = [mmdr, mmdc, graphviz, d2, svg, mathjax]
+export const RENDERERS: readonly Renderer[] = [mmdr, mmdc, pele, graphviz, d2, svg, mathjax]
 
 export type Registry = Catalog & {
   chain(lang: string): readonly Renderer[]

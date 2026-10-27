@@ -5,8 +5,8 @@ import type { Renderer } from '../../hooks/renderers/types.ts'
 
 const ids = (renderers: readonly Renderer[]) => renderers.map((r) => r.id)
 
-test('with no renderers option, mermaid tries mmdr, then mmdc', () => {
-  expect(ids(createRegistry([]).chain('mermaid'))).toEqual(['mmdr', 'mmdc'])
+test('with no renderers option, mermaid tries mmdr, then mmdc, then pele', () => {
+  expect(ids(createRegistry([]).chain('mermaid'))).toEqual(['mmdr', 'mmdc', 'pele'])
 })
 
 test('listing one renderer of a lang drops its others', () => {

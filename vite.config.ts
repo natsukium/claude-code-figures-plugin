@@ -15,7 +15,7 @@ export default defineConfig({
     minify: true,
     license: { fileName: 'THIRD_PARTY_LICENSES.md' },
     lib: {
-      entry: { mathjax: 'vendor/mathjax.ts', hash: 'vendor/hash.ts' },
+      entry: { mathjax: 'vendor/mathjax.ts', hash: 'vendor/hash.ts', pele: 'vendor/pele.ts' },
       formats: ['es'],
     },
     rolldownOptions: {

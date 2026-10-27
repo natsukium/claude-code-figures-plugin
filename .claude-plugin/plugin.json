@@ -83,7 +83,7 @@
     "renderers": {
       "type": "string",
       "title": "Renderers",
-      "description": "Renderer ids in preference order, comma-separated: mmdr, mmdc (mermaid), dot, d2, svg, mathjax. A lang with any of its renderers listed uses only those; others keep the default order",
+      "description": "Renderer ids in preference order, comma-separated: mmdr, mmdc, pele (mermaid), dot, d2, svg, mathjax. A lang with any of its renderers listed uses only those; others keep the default order",
       "default": ""
     },
     "tool_image_max_rows": {

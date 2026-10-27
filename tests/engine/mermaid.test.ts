@@ -147,3 +147,31 @@ test('renderers=mmdc,mmdr tries mmdc first', { options: { renderers: 'mmdc,mmdr'
 
   expect(runs.map((argv) => argv[0]).slice(0, 2)).toEqual(['mmdc', 'mmdr'])
 })
+
+test(
+  'renderers=pele lays mermaid out in-process and hands resvg an SVG without custom properties',
+  { options: { renderers: 'pele' } },
+  async ($, on) => {
+    const { runs, stdins } = stubWorld(on, { respond: () => result(0) })
+
+    const ui = await mountReply($)
+
+    expect(await ui.find({ type: 'Image' })).toBeDefined()
+    expect(runs.map((argv) => argv[0])).toEqual(['fc-match', 'resvg'])
+    expect(stdins[1]).toMatch(/^<svg/)
+    expect(stdins[1]).not.toContain('var(')
+  },
+)
+
+test(
+  'renderers=pele without resvg on PATH leaves the block as code',
+  { options: { renderers: 'pele' } },
+  async ($, on) => {
+    stubWorld(on, { respond: (argv) => (argv[0] === 'resvg' ? missing('resvg') : result(0)) })
+
+    const ui = await mountReply($)
+
+    expect(await ui.find({ type: 'Image' })).toBeUndefined()
+    expect(await ui.find({ text: /not found/ })).toBeUndefined()
+  },
+)
