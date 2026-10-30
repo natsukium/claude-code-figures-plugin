@@ -7,7 +7,7 @@ import type { Io } from './io.ts'
 import { Memo, cacheDir, expire } from './pipeline/cache.ts'
 import { Pipeline } from './pipeline/index.ts'
 import { createRegistry } from './renderers/index.ts'
-import { replyPictures, toolGroupPictures, toolUsePictures } from './ui/inline.tsx'
+import { replyInPlace, replyPictures, toolGroupPictures, toolUsePictures } from './ui/inline.tsx'
 import { PANE, drawPane, gallery, selectedIn } from './ui/pane.tsx'
 import { type TerminalElements, type pictures, viewportOf } from './ui/pictures.tsx'
 
@@ -76,6 +76,11 @@ export const register: Register = (on, options) => {
   on('ui.render', { component: 'AssistantMessage' }, async ($, e, next) => {
     if (e.surface !== 'terminal') return next(e)
     const el = $.ui.resolve(e)
+    if (config.placement === 'inline') {
+      const down = (text: string, isFirstOfReply: boolean) =>
+        next({ ...e, props: { ...e.props, text, isFirstOfReply } })
+      return (await replyInPlace(ioOf($), figures, el, e.props, viewportOf(e), down)) ?? next(e)
+    }
     return under(el, () => next(e), await replyPictures(ioOf($), figures, el, e.props.text, viewportOf(e)))
   })
 

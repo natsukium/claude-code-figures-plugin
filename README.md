@@ -87,6 +87,8 @@ Set these with `/config` or `claude plugin configure figures`.
 | `renderers`           | (empty)       | Renderer ids in preference order, comma-separated; see below                                                                                                                                |
 | `tool_images`         | `true`        | Draw images found in tool results                                                                                                                                                           |
 | `tool_image_max_rows` | `12`          | Tallest a tool-result thumbnail may be, in cells                                                                                                                                            |
+| `placement`           | `below`       | `below` draws a reply's pictures under it; `inline` puts each in place of its block                                                                                                         |
+| `turn_flowcharts`     | `true`        | Draw a left-to-right flowchart top to bottom when that makes it readable within `max_rows`                                                                                                  |
 
 `renderers` picks and orders the programs that draw each language. The ids are `mmdr`, `mmdc`, and
 `pele` (mermaid), `dot`, `d2`, `svg`, and `mathjax`. A language with any of its renderers listed
