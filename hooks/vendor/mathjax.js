@@ -10236,7 +10236,7 @@ function ti(e) {
 		}
 		protoBBox(e) {
 			let t = this.stretch.dir !== H.None;
-			t && this.size === null && this.getStretchedVariant([0]), !(t && this.size < 0) && (super.computeBBox(e), e.w === 0 && this.node.attributes.hasExplicit("fence") && this.node.getText() === "" && (this.node.texClass === b.OPEN || this.node.texClass === b.CLOSE) && !this.jax.options.mathmlSpacing && (e.R = this.font.params.nulldelimiterspace), this.copySkewIC(e));
+			t && this.size === null && this.getStretchedVariant([0]), t && this.size < 0 || (super.computeBBox(e), e.w === 0 && this.node.attributes.hasExplicit("fence") && this.node.getText() === "" && (this.node.texClass === b.OPEN || this.node.texClass === b.CLOSE) && !this.jax.options.mathmlSpacing && (e.R = this.font.params.nulldelimiterspace), this.copySkewIC(e));
 		}
 		getAccentOffset() {
 			let e = K.empty();
