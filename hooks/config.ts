@@ -11,6 +11,10 @@ export type Config = {
   toolImageMaxRows: number
   /** Renderer ids in preference order; see renderers/index.ts. */
   renderers: string[]
+  /** `below` draws a reply's pictures under it; `inline` puts each where its block was. */
+  placement: 'below' | 'inline'
+  /** Turn a left-to-right flowchart top-to-bottom when that draws it larger. */
+  turnFlowcharts: boolean
 }
 
 export function parseConfig(options: Record<string, unknown>): Config {
@@ -28,5 +32,7 @@ export function parseConfig(options: Record<string, unknown>): Config {
       .split(',')
       .map((id) => id.trim())
       .filter((id) => id !== ''),
+    placement: options.placement === 'inline' ? 'inline' : 'below',
+    turnFlowcharts: options.turn_flowcharts !== false,
   }
 }
