@@ -45,6 +45,8 @@ export type Stubs = {
   exists?: (path: string) => boolean
   respond?: Respond
   read?: (path: string) => { value: { base64: string } | string } | { deny: string }
+  /** What the engine draws for a row; by default one fixed line. */
+  engine?: (props: Record<string, unknown>) => RenderElement
 }
 
 /**
@@ -57,7 +59,11 @@ export function stubWorld(on: On, stubs: Stubs = {}) {
   const stdins: (string | undefined)[] = []
   const writes: { path: string; text: string }[] = []
   const png = stubs.png ?? PNG_1600x400
-  on('ui.render', async () => h('Text', null, 'engine row') as RenderElement)
+  on(
+    'ui.render',
+    async (_, e) =>
+      stubs.engine?.(e.props as Record<string, unknown>) ?? (h('Text', null, 'engine row') as RenderElement),
+  )
   on('config.list', async () => ({ value: [themeRow(stubs.claudeTheme ?? 'dark')] }))
   on('env.get', async (_, e) => ({ value: e.name === 'COLORFGBG' ? stubs.colorfgbg : '/tmp/x' }))
   on('fs.write', async (_, e) => {

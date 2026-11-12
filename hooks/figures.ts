@@ -1,9 +1,10 @@
 import type { Config } from './config.ts'
-import { type Block, blocksIn } from './detect/markdown.ts'
+import { type Block, type Span, blocksIn, spansIn } from './detect/markdown.ts'
 import { type FoundImage, SVG_MIME, imagesIn, readSvgIn, sentFilesIn } from './detect/tool-output.ts'
 import type { Io } from './io.ts'
+import { LEGIBLE_SCALE, type Viewport, capped } from './layout.ts'
 import type { Memo } from './pipeline/cache.ts'
-import type { Outcome, Pipeline } from './pipeline/index.ts'
+import type { Outcome, Pipeline, Rendered } from './pipeline/index.ts'
 import type { Registry } from './renderers/index.ts'
 import { resolveTheme } from './theme.ts'
 
@@ -22,6 +23,40 @@ export type Figures = {
 }
 
 export const blocksOf = (figures: Figures, text: string): Block[] => blocksIn(text, figures.registry)
+export const spansOf = (figures: Figures, text: string): Span[] => spansIn(text, figures.registry)
+
+const SIDEWAYS = /^(\s*(?:flowchart|graph)\s+)(LR|RL)\b/m
+
+/** The flowchart drawn top to bottom, or undefined for any other diagram. */
+export function turnedFlowchart(source: string): string | undefined {
+  if (!SIDEWAYS.test(source)) return undefined
+  return source.replace(SIDEWAYS, (_, head: string, direction: string) => head + (direction === 'LR' ? 'TD' : 'BT'))
+}
+
+// A long left-to-right chain fits the terminal's width only by shrinking its
+// labels past reading; turned top to bottom it often reads within the row
+// cap. The turned drawing is kept only then: one that reads only by growing
+// to the terminal's height would take the screen for a short chain.
+export async function turnWide(
+  io: Io,
+  figures: Figures,
+  blocks: Block[],
+  outcomes: Outcome[],
+  room: Viewport,
+): Promise<Outcome[]> {
+  if (!figures.config.turnFlowcharts) return outcomes
+  const scaleOf = (rendered: Rendered) => capped(rendered, figures.config, room).scale
+  return Promise.all(
+    outcomes.map(async (outcome, i) => {
+      const block = blocks[i]
+      if (block?.lang !== 'mermaid' || !('path' in outcome)) return outcome
+      const source = scaleOf(outcome) < LEGIBLE_SCALE ? turnedFlowchart(block.source) : undefined
+      if (source === undefined) return outcome
+      const [turned] = await renderBlocks(io, figures, [{ lang: block.lang, source }])
+      return turned !== undefined && 'path' in turned && scaleOf(turned) >= LEGIBLE_SCALE ? turned : outcome
+    }),
+  )
+}
 
 export async function renderBlocks(io: Io, figures: Figures, blocks: Block[]): Promise<Outcome[]> {
   const { config, pipeline } = figures

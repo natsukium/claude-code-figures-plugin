@@ -93,6 +93,19 @@
       "default": 12,
       "min": 1,
       "max": 255
+    },
+    "placement": {
+      "type": "string",
+      "title": "Placement",
+      "description": "Where a reply's diagrams and formulas are drawn: below the reply, or inline, each in place of its block",
+      "options": ["below", "inline"],
+      "default": "below"
+    },
+    "turn_flowcharts": {
+      "type": "boolean",
+      "title": "Turn wide flowcharts",
+      "description": "Draw a left-to-right mermaid flowchart top to bottom when it would otherwise be shrunk past legibility and turning it draws it larger",
+      "default": true
     }
   },
   "types": "./types/index.d.ts"

@@ -35,6 +35,10 @@ const fit = (natural: Size, limits: Limits, viewport: Viewport, maxRows: number)
   return { ...cells, scale: shownScale(cells.columns, natural, limits) }
 }
 
+/** The picture within the max_rows cap, never grown past it. */
+export const capped = (natural: Size, limits: Limits, viewport: Viewport): Fit =>
+  fit(natural, limits, viewport, limits.maxRows)
+
 // A picture shrunk past legibility by the row cap gets the terminal's height
 // instead, less a few rows so the prompt stays on screen; one still too small
 // after that (a very wide one) is drawn anyway, with a hint to enlarge it.
