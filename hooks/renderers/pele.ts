@@ -1,9 +1,9 @@
-import { MissingCommand } from '../pipeline/exec.ts'
-import { resolveCss } from '../svg/css.ts'
-import { isDark } from '../theme.ts'
+import { MissingCommand } from '../pipeline/exec'
+import { resolveCss } from '../svg/css'
+import { isDark } from '../theme'
 import { render } from '../vendor/pele.js'
-import { inkFor } from './ink.ts'
-import type { CodeRequest, Renderer } from './types.ts'
+import { inkFor } from './ink'
+import type { CodeRequest, Renderer } from './types'
 
 // pele's defaults are its light theme.
 const DARK = {

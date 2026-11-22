@@ -1,6 +1,6 @@
-import type { Config } from '../config.ts'
-import { inline, thumbnail } from '../layout.ts'
-import type { Placement } from './pictures.tsx'
+import type { Config } from '../config'
+import { inline, thumbnail } from '../layout'
+import type { Placement } from './pictures'
 
 export const fullSize = (config: Config): Placement => ({
   fit: (natural, viewport) => inline(natural, config, viewport),

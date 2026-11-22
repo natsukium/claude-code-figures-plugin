@@ -1,6 +1,6 @@
 import { expect, test } from 'claude-code/testing'
 
-import { fence, missing, mountReply, pngHeader, stubWorld } from './support.ts'
+import { fence, missing, mountReply, pngHeader, stubWorld } from './support'
 
 test('a dot fence is rendered to SVG by Graphviz with light ink on a dark theme, then rasterized by resvg', async ($, on) => {
   const { runs } = stubWorld(on)

@@ -1,8 +1,8 @@
 import { expect, test } from 'vitest'
 
-import { blocksIn } from '../../hooks/detect/markdown.ts'
-import { imagesIn, readSvgIn, sentFilesIn } from '../../hooks/detect/tool-output.ts'
-import { createRegistry } from '../../hooks/renderers/index.ts'
+import { blocksIn } from '../hooks/detect/markdown'
+import { imagesIn, readSvgIn, sentFilesIn } from '../hooks/detect/tool-output'
+import { createRegistry } from '../hooks/renderers/index'
 
 const fence = (lang: string, body: string) => `\`\`\`${lang}\n${body}\n\`\`\`\n`
 

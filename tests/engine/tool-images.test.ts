@@ -1,6 +1,6 @@
 import { expect, test, type Engine } from 'claude-code/testing'
 
-import { PNG_1600x400, PNG_400x1600, missing, readImage, stubWorld } from './support.ts'
+import { PNG_1600x400, PNG_400x1600, missing, readImage, stubWorld } from './support'
 
 const mountToolUse = ($: Engine, output: unknown, tool = 'Read') =>
   $.ui.mount({

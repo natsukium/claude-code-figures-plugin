@@ -1,4 +1,4 @@
-import { Unsupported } from './unsupported.ts'
+import { Unsupported } from './unsupported'
 
 /** Straight (not premultiplied) RGBA, each channel 0 to 1. */
 export type Rgba = readonly [number, number, number, number]

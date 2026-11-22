@@ -1,11 +1,11 @@
-import type { FoundImage } from '../detect/tool-output.ts'
-import type { Io } from '../io.ts'
-import type { Registry } from '../renderers/index.ts'
-import type { Artifact, CodeRequest, Renderer } from '../renderers/types.ts'
-import { Memo, cacheDir, cacheKey } from './cache.ts'
-import { type Exec, MissingCommand, execWith, failure } from './exec.ts'
-import { readPngHeader, readPngSize } from './png.ts'
-import { convertToPng, rasterizeSvg, sansSerifFamily } from './raster.ts'
+import type { FoundImage } from '../detect/tool-output'
+import type { Io } from '../io'
+import type { Registry } from '../renderers/index'
+import type { Artifact, CodeRequest, Renderer } from '../renderers/types'
+import { Memo, cacheDir, cacheKey } from './cache'
+import { type Exec, MissingCommand, execWith, failure } from './exec'
+import { readPngHeader, readPngSize } from './png'
+import { convertToPng, rasterizeSvg, sansSerifFamily } from './raster'
 
 /** A PNG on disk, with its size at 1x. */
 export type Rendered = { path: string; width: number; height: number }

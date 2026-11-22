@@ -1,4 +1,4 @@
-import type { Io, RunResult } from '../io.ts'
+import type { Io, RunResult } from '../io'
 
 export class MissingCommand extends Error {
   readonly command: string

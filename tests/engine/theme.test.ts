@@ -1,6 +1,6 @@
 import { expect, test } from 'claude-code/testing'
 
-import { fence, mountReply, stubWorld } from './support.ts'
+import { fence, mountReply, stubWorld } from './support'
 
 test('with theme=auto, a light Claude Code theme renders mermaid with the default theme and d2 light', async ($, on) => {
   const { runs } = stubWorld(on, { claudeTheme: 'light-daltonized' })

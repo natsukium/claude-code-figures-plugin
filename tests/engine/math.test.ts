@@ -1,6 +1,6 @@
 import { expect, test } from 'claude-code/testing'
 
-import { mountReply, PNG_1600x400, result, stubWorld } from './support.ts'
+import { mountReply, PNG_1600x400, result, stubWorld } from './support'
 
 test('display math is typeset in-process and handed to resvg inked for the theme, an ex to a cell width', async ($, on) => {
   const { runs, stdins } = stubWorld(on, { respond: () => result(0) })

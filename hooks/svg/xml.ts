@@ -1,4 +1,4 @@
-import { Unsupported } from './unsupported.ts'
+import { Unsupported } from './unsupported'
 
 export type Element = { name: string; attrs: Map<string, string>; children: (Element | string)[] }
 

@@ -1,5 +1,5 @@
-import { parseColor } from './color.ts'
-import { type Element, parseXml, serializeXml } from './xml.ts'
+import { parseColor } from './color'
+import { type Element, parseXml, serializeXml } from './xml'
 
 // Geometry properties SVG 2 lets a style set, which resvg reads only as
 // attributes.

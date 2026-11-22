@@ -1,15 +1,15 @@
 import { atom, read, update } from 'claude-code'
 import type { EngineInterface, Register, RenderChildren } from 'claude-code'
 
-import { parseConfig } from './config.ts'
-import type { Figures } from './figures.ts'
-import type { Io } from './io.ts'
-import { Memo, cacheDir, expire } from './pipeline/cache.ts'
-import { Pipeline } from './pipeline/index.ts'
-import { createRegistry } from './renderers/index.ts'
-import { replyPictures, toolGroupPictures, toolUsePictures } from './ui/inline.tsx'
-import { PANE, drawPane, gallery, selectedIn } from './ui/pane.tsx'
-import { type TerminalElements, type pictures, viewportOf } from './ui/pictures.tsx'
+import { parseConfig } from './config'
+import type { Figures } from './figures'
+import type { Io } from './io'
+import { Memo, cacheDir, expire } from './pipeline/cache'
+import { Pipeline } from './pipeline/index'
+import { createRegistry } from './renderers/index'
+import { replyPictures, toolGroupPictures, toolUsePictures } from './ui/inline'
+import { PANE, drawPane, gallery, selectedIn } from './ui/pane'
+import { type TerminalElements, type pictures, viewportOf } from './ui/pictures'
 
 const selected = atom({ plugin: 'figures', key: 'selected' } as const, null)
 // Read by the pane so that each /figures redraws it: the engine does not track

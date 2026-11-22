@@ -145,7 +145,7 @@ pinned in `pnpm-lock.yaml`, whatever `claude` is on `PATH`.
 ```sh
 pnpm install
 pnpm build              # regenerate hooks/vendor/
-pnpm test               # unit tests (Vitest, tests/unit/*.spec.ts)
+pnpm test               # unit tests (Vitest, spec/*.spec.ts)
 pnpm typecheck
 pnpm exec claude plugin validate .
 pnpm exec claude plugin test .    # hooks through the engine (tests/engine/*.test.ts)

@@ -1,12 +1,12 @@
-import type { Catalog } from '../detect/markdown.ts'
-import { d2 } from './d2.ts'
-import { graphviz } from './graphviz.ts'
-import { mathjax } from './mathjax.ts'
-import { mmdc } from './mmdc.ts'
-import { mmdr } from './mmdr.ts'
-import { pele } from './pele.ts'
-import { svg } from './svg.ts'
-import type { Renderer } from './types.ts'
+import type { Catalog } from '../detect/markdown'
+import { d2 } from './d2'
+import { graphviz } from './graphviz'
+import { mathjax } from './mathjax'
+import { mmdc } from './mmdc'
+import { mmdr } from './mmdr'
+import { pele } from './pele'
+import { svg } from './svg'
+import type { Renderer } from './types'
 
 /** Every renderer, each lang's in default preference order. */
 export const RENDERERS: readonly Renderer[] = [mmdr, mmdc, pele, graphviz, d2, svg, mathjax]

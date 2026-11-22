@@ -1,7 +1,7 @@
 import type { Elements } from 'claude-code'
 
-import { type Fit, LEGIBLE_SCALE, type Size, type Viewport } from '../layout.ts'
-import type { Outcome } from '../pipeline/index.ts'
+import { type Fit, LEGIBLE_SCALE, type Size, type Viewport } from '../layout'
+import type { Outcome } from '../pipeline/index'
 
 export type TerminalElements = Pick<Elements['terminal'], 'Box' | 'Image' | 'Text'>
 

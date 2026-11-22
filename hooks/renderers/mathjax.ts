@@ -1,6 +1,6 @@
 import { tex2svg } from '../vendor/mathjax.js'
-import { inkFor } from './ink.ts'
-import type { Renderer } from './types.ts'
+import { inkFor } from './ink'
+import type { Renderer } from './types'
 
 // MathJax sizes its SVG in ex, which resvg reads as half its 12px default
 // font; restating the size in pixels, with an ex as wide as a terminal cell,
