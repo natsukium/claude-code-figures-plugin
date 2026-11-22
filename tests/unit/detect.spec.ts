@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import { blocksIn } from '../../hooks/detect/markdown.ts'
+import { blocksIn, spansIn } from '../../hooks/detect/markdown.ts'
 import { imagesIn, readSvgIn, sentFilesIn } from '../../hooks/detect/tool-output.ts'
 import { createRegistry } from '../../hooks/renderers/index.ts'
 
@@ -86,4 +86,11 @@ test('readSvgIn skips a partial read, other files, and other tools', () => {
   expect(readSvgIn('Read', readText('/repo/diagram.svg', '</svg>', { startLine: 3, numLines: 1 }))).toBeUndefined()
   expect(readSvgIn('Read', readText('/repo/notes.txt', '<svg/>'))).toBeUndefined()
   expect(readSvgIn('Grep', readText('/repo/diagram.svg', '<svg/>'))).toBeUndefined()
+})
+
+test('spansIn gives each block where it sits, from its opening fence or $$ to just past its close', () => {
+  const text = `Intro.\n\n$$x^2$$\n\n${fence('mermaid', 'flowchart LR')}Outro.`
+  const spans = spansIn(text, createRegistry([]))
+
+  expect(spans.map((s) => text.slice(s.start, s.end))).toEqual(['$$x^2$$', '```mermaid\nflowchart LR\n```'])
 })
