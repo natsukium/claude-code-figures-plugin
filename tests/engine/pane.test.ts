@@ -1,7 +1,7 @@
 import type { On, PromptOrigin, SessionMessage } from 'claude-code'
 import { expect, test, type Engine } from 'claude-code/testing'
 
-import { fence, missing, PNG_400x1600, readImage, stubWorld } from './support.ts'
+import { fence, missing, PNG_400x1600, readImage, stubWorld } from './support'
 
 const transcript: SessionMessage[] = [
   { role: 'user', text: 'draw it', toolUses: [] },

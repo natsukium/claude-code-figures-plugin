@@ -1,9 +1,9 @@
-import { type Figures, type ToolCall, blocksOf, renderBlocks, renderImages } from '../figures.ts'
-import type { Io } from '../io.ts'
-import type { Viewport } from '../layout.ts'
-import type { Outcome } from '../pipeline/index.ts'
-import { type TerminalElements, pictures } from './pictures.tsx'
-import { fullSize, thumbnailSize } from './placements.ts'
+import { type Figures, type ToolCall, blocksOf, renderBlocks, renderImages } from '../figures'
+import type { Io } from '../io'
+import type { Viewport } from '../layout'
+import type { Outcome } from '../pipeline/index'
+import { type TerminalElements, pictures } from './pictures'
+import { fullSize, thumbnailSize } from './placements'
 
 // Each returns the pictures to draw under the engine's own row, or undefined
 // to leave the row alone.

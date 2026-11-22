@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 
-import { createRegistry } from '../../hooks/renderers/index.ts'
-import type { Renderer } from '../../hooks/renderers/types.ts'
+import { createRegistry } from '../hooks/renderers/index'
+import type { Renderer } from '../hooks/renderers/types'
 
 const ids = (renderers: readonly Renderer[]) => renderers.map((r) => r.id)
 

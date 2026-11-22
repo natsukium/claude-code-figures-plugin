@@ -1,4 +1,4 @@
-import type { Io } from './io.ts'
+import type { Io } from './io'
 
 // Mods cannot read the terminal's background, so Claude Code's own theme
 // stands in for it. Its auto setting is resolved inside the engine and not

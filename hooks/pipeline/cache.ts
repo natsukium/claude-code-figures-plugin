@@ -1,4 +1,4 @@
-import type { Io } from '../io.ts'
+import type { Io } from '../io'
 import { sha256Hex } from '../vendor/hash.js'
 
 // JSON.stringify keeps insertion order, so keys are sorted to make two equal

@@ -1,5 +1,5 @@
-import { cacheKey } from '../pipeline/cache.ts'
-import type { CodeRequest, RenderContext } from './types.ts'
+import { cacheKey } from '../pipeline/cache'
+import type { CodeRequest, RenderContext } from './types'
 
 // Both mermaid renderers take the background through a config file rather
 // than a flag.

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import { parseConfig } from '../../hooks/config.ts'
+import { parseConfig } from '../hooks/config'
 
 test('the renderers option is split on commas, trimmed, and empty entries dropped', () => {
   expect(parseConfig({ renderers: ' mmdc, ,mmdr ' }).renderers).toEqual(['mmdc', 'mmdr'])

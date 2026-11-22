@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest'
 
-import type { Io, RunResult } from '../../hooks/io.ts'
-import { Pipeline } from '../../hooks/pipeline/index.ts'
-import { type Registry, createRegistry } from '../../hooks/renderers/index.ts'
-import type { CodeRequest, Renderer } from '../../hooks/renderers/types.ts'
+import type { Io, RunResult } from '../hooks/io'
+import { Pipeline } from '../hooks/pipeline/index'
+import { type Registry, createRegistry } from '../hooks/renderers/index'
+import type { CodeRequest, Renderer } from '../hooks/renderers/types'
 
 const PNG_1600x400 = 'iVBORw0KGgoAAAANSUhEUgAABkAAAAGQCAYAAAAAAAAA'
 const ok = (stdout = ''): RunResult => ({

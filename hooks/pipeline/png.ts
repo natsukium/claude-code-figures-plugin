@@ -1,5 +1,5 @@
-import type { Io } from '../io.ts'
-import type { Exec } from './exec.ts'
+import type { Io } from '../io'
+import type { Exec } from './exec'
 
 export type Size = { width: number; height: number }
 

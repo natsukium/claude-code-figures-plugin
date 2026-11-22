@@ -1,6 +1,6 @@
-import { failure } from '../pipeline/exec.ts'
-import { mermaidConfig } from './mermaid-config.ts'
-import type { Renderer } from './types.ts'
+import { failure } from '../pipeline/exec'
+import { mermaidConfig } from './mermaid-config'
+import type { Renderer } from './types'
 
 // mmdr writes SVG for resvg to rasterize at the scale; without resvg, or at
 // 1x where resvg adds nothing, it writes the PNG itself.

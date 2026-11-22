@@ -1,4 +1,4 @@
-import { type Exec, MissingCommand, failure } from './exec.ts'
+import { type Exec, MissingCommand, failure } from './exec'
 
 export async function rasterizeSvg(
   exec: Exec,

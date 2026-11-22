@@ -1,6 +1,6 @@
-import { failure } from '../pipeline/exec.ts'
-import { isDark } from '../theme.ts'
-import type { Renderer } from './types.ts'
+import { failure } from '../pipeline/exec'
+import { isDark } from '../theme'
+import type { Renderer } from './types'
 
 // d2's theme 200 is its dark theme; 0 its default light one.
 export const d2: Renderer = {

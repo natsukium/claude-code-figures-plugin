@@ -1,6 +1,6 @@
 import { expect, test } from 'claude-code/testing'
 
-import { missing, mountReply, result, stubWorld } from './support.ts'
+import { missing, mountReply, result, stubWorld } from './support'
 
 test('a mermaid fence is rendered to SVG by mmdr, rasterized by resvg at the scale, and drawn at its 1x size', async ($, on) => {
   const { runs } = stubWorld(on, { respond: (argv) => result(0, argv[0] === 'mmdr' ? '<svg/>' : '') })

@@ -1,5 +1,5 @@
-import type { Io } from '../io.ts'
-import type { Exec } from '../pipeline/exec.ts'
+import type { Io } from '../io'
+import type { Exec } from '../pipeline/exec'
 
 export type CodeRequest = {
   lang: string

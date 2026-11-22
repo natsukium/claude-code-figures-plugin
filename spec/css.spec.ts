@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import { resolveCss } from '../../hooks/svg/css.ts'
+import { resolveCss } from '../hooks/svg/css'
 
 const svg = (body: string, style = '') =>
   `<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"${style ? ` style="${style}"` : ''}>${body}</svg>`

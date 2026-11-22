@@ -1,6 +1,6 @@
-import { failure } from '../pipeline/exec.ts'
-import { inkFor } from './ink.ts'
-import type { Renderer } from './types.ts'
+import { failure } from '../pipeline/exec'
+import { inkFor } from './ink'
+import type { Renderer } from './types'
 
 // Graphviz draws black on white unless told otherwise, which disappears on a
 // dark terminal once the background is transparent.

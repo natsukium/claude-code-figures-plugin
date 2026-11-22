@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 
-import { fitCells, inline, pane, thumbnail } from '../../hooks/layout.ts'
+import { fitCells, inline, pane, thumbnail } from '../hooks/layout'
 
 const cell = { cellWidthPx: 8, cellAspect: 2 }
 const limits = { ...cell, maxColumns: 120, maxRows: 30, toolImageMaxRows: 12 }

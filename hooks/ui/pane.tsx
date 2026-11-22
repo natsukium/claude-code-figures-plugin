@@ -1,12 +1,12 @@
 import type { Elements } from 'claude-code'
 
 import type { GalleryItem } from '../../types'
-import { type Figures, blocksOf, renderBlocks, renderImages } from '../figures.ts'
-import type { Io } from '../io.ts'
-import { LEGIBLE_SCALE, pane, type Viewport } from '../layout.ts'
-import { MissingCommand, execWith } from '../pipeline/exec.ts'
-import type { Outcome } from '../pipeline/index.ts'
-import { fullSize, thumbnailSize } from './placements.ts'
+import { type Figures, blocksOf, renderBlocks, renderImages } from '../figures'
+import type { Io } from '../io'
+import { LEGIBLE_SCALE, pane, type Viewport } from '../layout'
+import { MissingCommand, execWith } from '../pipeline/exec'
+import type { Outcome } from '../pipeline/index'
+import { fullSize, thumbnailSize } from './placements'
 
 export const PANE = 'figures'
 const GALLERY_SIZE = 30

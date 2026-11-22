@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 
-import { cacheKey } from '../../hooks/pipeline/cache.ts'
-import { pngSize } from '../../hooks/pipeline/png.ts'
+import { cacheKey } from '../hooks/pipeline/cache'
+import { pngSize } from '../hooks/pipeline/png'
 
 test('cacheKey is the SHA-256 of the canonical JSON', () => {
   // sha256('"abc"')

@@ -1,11 +1,11 @@
-import type { Config } from './config.ts'
-import { type Block, blocksIn } from './detect/markdown.ts'
-import { type FoundImage, SVG_MIME, imagesIn, readSvgIn, sentFilesIn } from './detect/tool-output.ts'
-import type { Io } from './io.ts'
-import type { Memo } from './pipeline/cache.ts'
-import type { Outcome, Pipeline } from './pipeline/index.ts'
-import type { Registry } from './renderers/index.ts'
-import { resolveTheme } from './theme.ts'
+import type { Config } from './config'
+import { type Block, blocksIn } from './detect/markdown'
+import { type FoundImage, SVG_MIME, imagesIn, readSvgIn, sentFilesIn } from './detect/tool-output'
+import type { Io } from './io'
+import type { Memo } from './pipeline/cache'
+import type { Outcome, Pipeline } from './pipeline/index'
+import type { Registry } from './renderers/index'
+import { resolveTheme } from './theme'
 
 /** What every hook shares: the options, the renderers they chose, the pipeline, and the files sent so far. */
 export type Figures = {

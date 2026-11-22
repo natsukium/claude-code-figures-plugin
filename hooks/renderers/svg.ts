@@ -1,4 +1,4 @@
-import type { Renderer } from './types.ts'
+import type { Renderer } from './types'
 
 export const svg: Renderer = {
   id: 'svg',

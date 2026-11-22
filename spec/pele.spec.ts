@@ -1,8 +1,8 @@
 import { expect, test } from 'vitest'
 
-import { MissingCommand } from '../../hooks/pipeline/exec.ts'
-import { pele } from '../../hooks/renderers/pele.ts'
-import type { CodeRequest, RenderContext } from '../../hooks/renderers/types.ts'
+import { MissingCommand } from '../hooks/pipeline/exec'
+import { pele } from '../hooks/renderers/pele'
+import type { CodeRequest, RenderContext } from '../hooks/renderers/types'
 
 const request: CodeRequest = {
   lang: 'mermaid',

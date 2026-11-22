@@ -1,4 +1,4 @@
-import { isDark } from '../theme.ts'
+import { isDark } from '../theme'
 
 const LIGHT_INK = '#d4d4d4'
 const DARK_INK = '#1f1f1f'
